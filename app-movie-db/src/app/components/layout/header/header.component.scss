@@ -1,0 +1,63 @@
+:host {
+    .header {
+        background-color: #AEC5EB;
+        height: 100px;
+        color: white;
+    }
+
+    .row {
+        height: inherit;
+    }
+
+    .logo-box {
+        display: inline;
+    }
+
+    .action-menu {
+        * {
+        margin: 0 15px;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.4em;                        
+        }
+        :first-child {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+    }
+
+    .action-search {
+        text-align: right;
+    }
+
+    @media screen and (max-width: 576px){
+        .header {
+            height: fit-content;
+        }
+
+        .logo-box {
+            display: flex;
+            justify-content: center;
+            img {
+                display: inline-block;
+            }
+        }
+
+        .action-menu, .action-search {
+            text-align: center;
+        }
+        
+        .action-menu {
+            * {
+                display: block;
+                margin: 10px 0;
+            }
+            :first-child {
+                margin: 0;
+            }
+        }
+    }
+
+}
