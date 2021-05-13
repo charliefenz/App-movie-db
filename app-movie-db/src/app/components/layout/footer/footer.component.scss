@@ -1,0 +1,15 @@
+:host {
+    $footer-height: 150px;
+
+    .footer {
+        height: $footer-height;
+        background-color: #485258;
+        display: flex;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 0.9em;
+    }
+
+}

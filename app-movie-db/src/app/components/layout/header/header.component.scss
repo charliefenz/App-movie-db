@@ -1,0 +1,65 @@
+:host {
+    $header-height: 100px;
+
+    .header {
+        background-color: #AEC5EB;
+        height: $header-height;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .logo-box {
+        cursor: pointer;
+    }
+
+    .action-menu {
+        flex: 1;
+        margin: 0 20px;
+        color: white;
+        font-weight: 500;
+    }
+
+    .menu-button {
+        display: inline-flex;
+        align-items: center;
+        padding: 0 20px;
+        cursor: pointer;
+        &:hover {
+            background-color: #496A81;
+            height: $header-height;
+            border-radius: 5px;
+        }  
+    }
+
+    @media screen and (max-width: 576px){
+        .header {
+            display: block;
+            height: fit-content;
+        }
+
+        .logo-box {
+            display: flex;
+            justify-content: center;
+        }
+
+        .action.menu, .menu-button {
+            width: 100%;
+            padding: 10px 0;
+        }
+        
+        .action-menu {
+            flex: none;
+            margin: 0;
+        }
+
+        .menu-button {
+            display: flex;
+            justify-content: center;
+            &:hover {
+                height: auto;
+            }
+        }
+    }
+
+}
