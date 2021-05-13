@@ -6,12 +6,15 @@ html, body { height: 100%; width: 100vw; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Color pallette */
-$space-cadet: #2B3A67;
+
+$space-cadet: #2B3A67 !global;
 $dark-electric: #496A81;
 $light-steel: #AEC5EB;
 $pink: #F9DEC9;
 $melon: #E9AFA3;
+$custom-gray: #485258;
 
-.cursor-pointer {
-    cursor: pointer;
+
+.color-white {
+    color: white;
 }
