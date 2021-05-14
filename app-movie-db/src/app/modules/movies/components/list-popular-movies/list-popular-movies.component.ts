@@ -3,11 +3,11 @@ import { MovieListResult } from '../../movie-list-result';
 import { MoviesService } from '../../movies.service';
 
 @Component({
-  selector: 'app-list-latest-movies',
-  templateUrl: './list-latest-movies.component.html',
-  styleUrls: ['./list-latest-movies.component.scss']
+  selector: 'app-list-popular-movies',
+  templateUrl: './list-popular-movies.component.html',
+  styleUrls: ['./list-popular-movies.component.scss']
 })
-export class ListLatestMoviesComponent implements OnInit {
+export class ListPopularMoviesComponent implements OnInit {
 
   popularMovies: MovieListResult[];
 
