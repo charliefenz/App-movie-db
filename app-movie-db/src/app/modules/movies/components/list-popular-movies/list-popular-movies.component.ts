@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieListResult } from '../../movie-list-result';
-import { MoviesService } from '../../movies.service';
+import { MovieListResult } from '../../models/movie-list-result';
+import { MoviesService } from '../../services/movies.service';
 
 @Component({
   selector: 'app-list-popular-movies',

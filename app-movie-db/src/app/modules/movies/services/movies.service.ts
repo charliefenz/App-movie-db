@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EndPoints } from 'src/app/common/endpoints';
 import { Observable } from 'rxjs';
-import { ArrayMoviesResponse } from './array-movies-response';
+import { ArrayMoviesResponse } from '../models/array-movies-response';
 
 @Injectable({
   providedIn: 'root'
