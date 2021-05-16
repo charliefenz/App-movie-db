@@ -7,8 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MoviesModule } from './modules/movies/movies.module';
-import { SeriesModule } from './modules/series/series.module';
 
 @NgModule({
   declarations: [
@@ -21,9 +19,7 @@ import { SeriesModule } from './modules/series/series.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule,
-    MoviesModule,
-    SeriesModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
