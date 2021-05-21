@@ -21,6 +21,4 @@ export class ListPopularMoviesComponent implements OnInit {
     const $popularMovies = this.moviesService.getPopularMovies();
     $popularMovies.subscribe((res) => this.popularMovies = res.results);
   }
-
-
 }

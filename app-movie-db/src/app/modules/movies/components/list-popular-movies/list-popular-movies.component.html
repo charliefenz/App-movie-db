@@ -1,1 +1,10 @@
-<div *ngFor="let movies of popularMovies">{{movies.title}}</div>
+<div class="container">
+    <div class="row">
+        <app-movie-item class="col-12 col-sm-4 col-md-3 col-lg-2" *ngFor="let movie of popularMovies" [movie]="movie">
+        </app-movie-item>
+    </div>
+</div>
+
+
+
+

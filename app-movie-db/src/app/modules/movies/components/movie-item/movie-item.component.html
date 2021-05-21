@@ -1,1 +1,44 @@
-<p>movie-item works!</p>
+<mat-card class="card-item">
+    <div class="img-container">
+        <img src="{{movie.poster_path}}" alt="poster image of {{movie.title}}" class="poster-image">
+    </div>
+    <div>
+        <h2>{{movie.title}}</h2>
+    </div>
+</mat-card>
+
+
+
+
+
+
+
+<!-- <mat-card class="card-item">
+    <div class="top">
+        <div class="left">
+            <img class="poster-image" src="{{movie.poster_path}}" alt="poster image of {{movie.title}}">
+        </div>
+        <div class="right">
+            <mat-card-header>
+                <mat-card-title>
+                    <h1>{{movie.title}}</h1>
+                </mat-card-title>
+                <mat-card-subtitle>
+                    {{movie.original_title}}
+                </mat-card-subtitle>
+            </mat-card-header>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="genres">
+            <mat-chip-list>
+                <mat-chip *ngFor="let genre of genreNames">{{genre}}</mat-chip>
+            </mat-chip-list>
+        </div>
+        <mat-card-content>
+            <span [class.shorted-text]="short">{{movie.overview}} </span>
+            <span class="plain-link" (click)="expandText()" *ngIf="short">[ver más]</span>
+            <span class="plain-link" (click)="collapseText()" *ngIf="!short">[ver menos]</span>
+        </mat-card-content>
+    </div>
+</mat-card> -->

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MoviesRoutingModule } from './movies-routing.module';
 import { ListPopularMoviesComponent } from './components/list-popular-movies/list-popular-movies.component';
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
-
+import { MaterialModule } from 'src/app/modules/material/material.module';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
   ],
   imports: [
     CommonModule,
-    MoviesRoutingModule
+    MoviesRoutingModule,
+    MaterialModule
   ],
   exports: [
     ListPopularMoviesComponent,
