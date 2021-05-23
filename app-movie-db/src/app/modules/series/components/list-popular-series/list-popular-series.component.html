@@ -1,1 +1,3 @@
-<div *ngFor="let serie of popularSeries">{{serie.name}}</div>
+<div class="popular-list-wrapper">
+    <app-serie-item *ngFor="let serie of popularSeries" [serie]="serie">{{serie.name}}
+</app-serie-item>

@@ -14,7 +14,7 @@ export class ListPopularSeriesComponent implements OnInit {
   constructor(private seriesService: SeriesService) { }
 
   ngOnInit(): void {
-    this.seriesService.getPopularSeries();
+    this.getPopularSeries();
   }
 
   getPopularSeries(): void {

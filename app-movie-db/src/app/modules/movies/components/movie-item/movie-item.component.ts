@@ -12,7 +12,6 @@ export class MovieItemComponent implements OnInit {
 
   @Input()
   movie: MovieListResult;
-  short = true;
   genreNames: string[];
 
   constructor(private genresService: GenresService) { }
@@ -21,16 +20,8 @@ export class MovieItemComponent implements OnInit {
     // Adding the basicUrl for images to the object poster_path property
     this.movie.poster_path = GlobalConstants.imagesUrl + this.movie.poster_path;
 
-    // getting genres names
-    this.genreNames = this.genresService.getGenresById(this.movie.genre_ids);
-  }
-
-  expandText(): void {
-    this.short = false;
-  }
-
-  collapseText(): void {
-    this.short = true;
+    /* // getting genres names
+    this.genreNames = this.genresService.getGenresById(this.movie.genre_ids); */
   }
 }
 

@@ -1,20 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'src/app/common/variables.scss';
 
 html, body { height: 100%; width: 100vw; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-/* Color pallette */
-
-$space-cadet: #2B3A67 !global;
-$dark-electric: #496A81;
-$light-steel: #AEC5EB;
-$pink: #F9DEC9;
-$melon: #E9AFA3;
-$custom-gray: #485258;
-
-
 .color-white {
+    color: white;
+}
+
+.popular-list-wrapper {
+    display: flex;
+    overflow: auto;
+    white-space: nowrap;
+}  
+
+.popular-item-card {
+    margin: 15px;
+    width: $popular-item-width;
+    background-color: $color-2nd;
+}
+
+.popular-item-img-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.popular-item-poster-image {
+    width: 100%;
+    height: $popular-item-width * 1.5;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.popular-item-title {
+    overflow: hidden;
     color: white;
 }
