@@ -16,7 +16,7 @@ export class SerieItemComponent implements OnInit {
 
   ngOnInit(): void {
     // Adding the basicUrl for images to the object backdrop_path property
-    this.serie.poster_path = GlobalConstants.imagesUrl + this.serie.poster_path;
+    this.serie.poster_path = GlobalConstants.imagesPosterUrl + this.serie.poster_path;
   }
 
 }

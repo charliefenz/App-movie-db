@@ -18,7 +18,7 @@ export class MovieItemComponent implements OnInit {
 
   ngOnInit(): void {
     // Adding the basicUrl for images to the object poster_path property
-    this.movie.poster_path = GlobalConstants.imagesUrl + this.movie.poster_path;
+    this.movie.poster_path = GlobalConstants.imagesPosterUrl + this.movie.poster_path;
 
     /* // getting genres names
     this.genreNames = this.genresService.getGenresById(this.movie.genre_ids); */
