@@ -4,6 +4,7 @@ import { MovieDetail } from '../../models/movie-detail';
 import { MoviesService } from '../../services/movies.service';
 import { Observable } from 'rxjs';
 import { GlobalConstants } from 'src/app/common/global-constants';
+import { Cast } from '../../models/movie-cast';
 
 @Component({
   selector: 'app-movie-detail',
@@ -13,6 +14,7 @@ import { GlobalConstants } from 'src/app/common/global-constants';
 export class MovieDetailComponent implements OnInit {
 
   movie$: Observable<MovieDetail>;
+  cast: Cast[];
   backdropPath: string;
   posterPath: string;
   hasWebpage = false;
@@ -31,8 +33,13 @@ export class MovieDetailComponent implements OnInit {
       if (res.homepage !== '') {
         this.hasWebpage = true;
       }
+      this.getCredits(res.id);
     });
-
   }
 
+  private getCredits(id: number): void {
+    const credits$ = this.moviesService.getCredits(id).subscribe((res) => {
+      this.cast = res.cast;
+    });
+  }
 }

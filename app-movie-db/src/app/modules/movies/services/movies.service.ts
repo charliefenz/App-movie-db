@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ArrayMoviesResponse } from '../models/array-movies-response';
 import { MovieDetail } from '../models/movie-detail';
 import { GlobalConstants } from 'src/app/common/global-constants';
+import { ArrayMovieCreditsResponse } from '../models/array-movie-credits-response';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,9 @@ export class MoviesService {
 
   getMovie(id: string): Observable<MovieDetail> {
     return this.httpClient.get<MovieDetail>(`${EndPoints.movie}${id}${GlobalConstants.apiKey}${GlobalConstants.langEs}`);
+  }
+
+  getCredits(id: number): Observable<ArrayMovieCreditsResponse> {
+    return this.httpClient.get<ArrayMovieCreditsResponse>(`${EndPoints.movie}${id}/credits${GlobalConstants.apiKey}${GlobalConstants.langEs}`);
   }
 }

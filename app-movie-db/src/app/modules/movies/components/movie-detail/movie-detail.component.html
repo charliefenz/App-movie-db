@@ -13,12 +13,22 @@
         </div>
         <div class="parent-2">
             <div class="box-2">
-                <mat-chip-list>
+                <mat-chip-list class="genre-list">
                     <mat-chip class="genre-chip" *ngFor="let genre of movie.genres">{{genre.name}}</mat-chip>
                 </mat-chip-list>
+            </div>
+            <div class="box-2">
+                <div class="detail-line">
+                    <span class="detail-label">Reparto principal: </span>
+                    <span *ngFor="let actor of cast; let i=index">
+                        <span *ngIf="i == 1">{{actor.name}}, </span>
+                        <span *ngIf="i == 2">{{actor.name}} y </span>
+                        <span *ngIf="i == 3">{{actor.name}}</span>
+                    </span>
+                </div>
                 <div class="detail-line">
                     <span class="detail-label">Año: </span>
-                    <span>{{movie.release_date | date:'yyyy' }}</span>
+                    <span>{{movie.release_date | date:'yyyy'}}</span>
                 </div>
                 <div class="detail-line">
                     <span class="detail-label">Duración: </span>
@@ -28,50 +38,13 @@
                     <span class="detail-label">Rating: </span>
                     <span>{{movie.vote_average}}</span>
                 </div>
-                <div class="detail-line">
-                    <a class="align-left icon-color" *ngIf="hasWebpage" href="{{movie.homepage}}" target="_blank" mat-icon-button aria-label="Button leads to movie page">
-                        <mat-icon>language</mat-icon>
-                    </a>
+                <div class="detail-line" *ngIf="hasWebpage">
+                    <a class="link" href="{{movie.homepage}}" target="_blank">Sitio Web<mat-icon class="icon">open_in_new</mat-icon></a>
                 </div>
             </div>
             <div class="box-3">
                 <p class="text-overview">{{movie.overview}}</p>
             </div>
         </div>
-    </div>
-    <!-- <div class="detail-overview">
-        <div class="poster">
-            <img src="{{posterPath}}" alt="Poster path of movie {{movie.title}}">
-        </div>
-        <div class="lines">
-            <h3>{{movie.tagline}}</h3>
-            <mat-chip-list>
-                <mat-chip *ngFor="let genre of movie.genres">{{genre.name}}</mat-chip>
-            </mat-chip-list>
-            <div class="detail-line">
-                <span>Lanzamiento: </span>
-                <span>{{movie.release_date | date:'d/M/yy' }}</span>
-            </div>
-            <div class="detail-line">
-                <span>Duración: </span>
-                <span>{{movie.runtime}} minutos</span>
-            </div>
-            <div class="detail-line">
-                <span>Rating: </span>
-                <span>{{movie.vote_average}}</span>
-            </div>
-            <div class="detail-line">
-                <span>Página oficial: </span>
-                <span><a href="{{movie.homepage}}">{{movie.homepage}}</a></span>
-            </div>
-        </div>
-        <div class="overview">
-            <p class="text-overview">{{movie.overview}}</p>
-        </div>
-    </div>
-    <p>{{movie.adult}}</p>
-    <div *ngFor="let productor of movie.production_companies">
-        {{productor.name}}
-    </div> -->
-    
+    </div>   
 </div>
