@@ -1,18 +1,27 @@
 <div *ngIf="serie$ | async as serie">
     <div class="detail-backdrop" [style.backgroundImage]="backdropPath">
-        <div class="detail-name">
-            <h1 class="detail-name">{{serie.name}}</h1>
+        <div class="detail-title">
+            <h1 class="detail-title">{{serie.name}}</h1>
             <h4>{{serie.original_name}}</h4>
         </div>
     </div>
     <div class="detail-container">
         <div class="detail-poster-path-container"> 
-            <img src="{{posterPath}}" alt="Poster path of serie {{serie.name}}">
+            <img src="{{posterPath}}" alt="Poster de serie {{serie.name}}">
         </div>
         <div class="detail-info-container">
             <mat-chip-list class="genre-list">
                 <mat-chip class="genre-chip" *ngFor="let genre of serie.genres">{{genre.name}}</mat-chip>
             </mat-chip-list>
+            <div class="detail-line network-list">
+                <span *ngFor="let network of networks">
+                    <img src="{{network.logo_path}}" alt="Logo de {{network.name}}">
+                </span>
+            </div>
+            <div class="detail-line">
+                <span class="detail-label">País: </span>
+                <span>{{serie.origin_country[0]}}</span>
+            </div>
             <div class="detail-line">
                 <span class="detail-label">Reparto principal: </span>
                 <span *ngFor="let actor of cast; let i=index">

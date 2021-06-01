@@ -1,3 +1,5 @@
+import { Network } from './networks';
+
 interface CreatedBy {
     id: number;
     credit_id: string;
@@ -38,12 +40,6 @@ interface NextEpisodeToAir {
     vote_count: number;
 }
 
-interface Network {
-    name: string;
-    id: number;
-    logo_path: string;
-    origin_country: string;
-}
 
 interface ProductionCompany {
     id: number;

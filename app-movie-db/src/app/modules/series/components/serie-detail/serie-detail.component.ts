@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GlobalConstants } from 'src/app/common/global-constants';
+import { Network } from '../../models/networks';
 import { SerieDetail } from '../../models/serie-detail';
 import { SeriesService } from '../../services/series.service';
 
@@ -15,6 +16,7 @@ export class SerieDetailComponent implements OnInit {
   serie$: Observable<SerieDetail>;
   backdropPath: string;
   posterPath: string;
+  networks: Network[] = [];
   hasWebPage = false;
 
   constructor(private route: ActivatedRoute, private seriesService: SeriesService) { }
@@ -24,14 +26,25 @@ export class SerieDetailComponent implements OnInit {
       this.serie$ = this.seriesService.getSerie(params.id);
     });
 
-    // Completee backdropPath, posterPath and determining if it has web
+    // Complete URL of backdropPath, posterPath, Networks.logo_path and determining if it has web
     this.serie$.subscribe((res) => {
       this.backdropPath = `Url(${GlobalConstants.imagesBackdropUrl + res.backdrop_path})`;
-      this.posterPath = `Url(${GlobalConstants.imagesPosterUrl + res.poster_path})`;
+      this.posterPath = `${GlobalConstants.imagesPosterUrl + res.poster_path}`;
+      for (const item of res.networks) { this.fillNetworks(item); }
       if (res.homepage !== '') {
         this.hasWebPage = true;
       }
     });
+  }
+
+  private fillNetworks(item: Network): void {
+    const network: Network = {
+      name: item.name,
+      id: item.id,
+      logo_path: `${GlobalConstants.imagesPosterUrl + item.logo_path}`,
+      origin_country: item.origin_country
+    };
+    this.networks.push(network);
   }
 
 }
