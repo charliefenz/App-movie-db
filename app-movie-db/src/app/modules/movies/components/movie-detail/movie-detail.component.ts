@@ -26,7 +26,7 @@ export class MovieDetailComponent implements OnInit {
       this.movie$ = this.moviesService.getMovie(params.id);
     });
 
-    // Complete backdropPath and posterPath
+    // Completee backdropPath, posterPath and determining if it has web
     this.movie$.subscribe((res) => {
       this.backdropPath = `Url(${GlobalConstants.imagesBackdropUrl + res.backdrop_path})`;
       this.posterPath = GlobalConstants.imagesPosterUrl + res.poster_path;

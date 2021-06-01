@@ -4,13 +4,15 @@ import { SeriesRoutingModule } from './series-routing.module';
 import { ListPopularSeriesComponent } from './components/list-popular-series/list-popular-series.component';
 import { SerieItemComponent } from './components/serie-item/serie-item.component';
 import { MaterialModule } from 'src/app/modules/material/material.module';
+import { SerieDetailComponent } from './components/serie-detail/serie-detail.component';
 
 
 
 @NgModule({
   declarations: [
     ListPopularSeriesComponent,
-    SerieItemComponent
+    SerieItemComponent,
+    SerieDetailComponent
   ],
   imports: [
     CommonModule,
