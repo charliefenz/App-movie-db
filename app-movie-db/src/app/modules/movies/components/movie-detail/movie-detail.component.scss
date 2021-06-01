@@ -45,39 +45,26 @@
         }
     }
 
-    .detail-overview {
-        display: flex;
-        width: 100%;
-        
-        .poster {
-            width: 30%;
-            display: flex;
-            align-items: center;
-            object-fit: contain;
-            
-            img {
-                width: 100%;
-                border-radius: 5px; 
-            }
-        }
-
-        .lines {
-            flex: 1;
-        }
-    }
-
-    .big-parent {
+    .detail-container {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
     }
 
-    .parent {
+    .detail-poster-path-container {
         width: 30%;
-        height: fit-content;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            height: 90%;
+            border-radius: 5px;
+        }
     }
 
-    .parent-2 {
+    .detail-info-container  {
         display: flex;
         flex-direction: column;
         flex: 1;
@@ -85,23 +72,12 @@
         margin-left: 10px;
     }
 
-    .box-1 {
-        height: 300px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-        img {
-            height: 100%;
-            border-radius: 5px;
-        }
-    }
-    .box-1, .box-2, .box-3 {
+    .detail-overview-container {
         padding: 10px 0;
     }
 
     .genre-list {
-        margin-bottom: 20px;
+        margin: 20px 0;
     }
     .genre-chip {
         background-color: $color-2nd;
@@ -121,18 +97,14 @@
     }
 
     @media screen and (max-width: $xs) {
-        .big-parent {
+        .detail-container {
             flex-wrap: nowrap;
             flex-direction: column;
             align-items: center;
         }
 
-        .parent, .parent-2 {
+        .detail-poster-path-container, .detail-info-container  {
             width: 90%;
-        }
-
-        .box-1 {
-            justify-content: center;
         }
 
         .detail-title {            
@@ -147,9 +119,9 @@
     }
 
     @media screen and (max-width: $sm) {
-        .box-1 {
+        .detail-poster-path-container {
             img {
-                height: 90%;
+                height: 80%;
             }
         }
     }
