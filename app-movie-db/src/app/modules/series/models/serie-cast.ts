@@ -1,4 +1,4 @@
-export interface MovieCast {
+export interface SeriesCast{
     adult: boolean;
     gender: number;
     id: number;
@@ -7,7 +7,6 @@ export interface MovieCast {
     original_name: string;
     popularity: number;
     profile_path: string;
-    cast_id: number;
     character: string;
     credit_id: string;
     order: number;

@@ -67,13 +67,13 @@
     .detail-info-container  {
         display: flex;
         flex-direction: column;
-        flex: 1;
+        flex: 1;    
         margin-right: 5px;
         margin-left: 10px;
     }
 
     .detail-overview-container {
-        padding: 10px 0;
+        padding: 10px 10px 0 0;
     }
 
     .genre-list {

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EndPoints } from 'src/app/common/endpoints';
 import { GlobalConstants } from 'src/app/common/global-constants';
+import { ArraySeriesCreditsResponse } from '../models/array-series-credits-response';
 import { ArraySeriesResponse } from '../models/array-series-response';
 import { SerieDetail } from '../models/serie-detail';
 
@@ -19,5 +20,9 @@ export class SeriesService {
 
   getSerie(id: string): Observable<SerieDetail> {
     return this.httpClient.get<SerieDetail>(`${EndPoints.serie}${id}${GlobalConstants.apiKey}${GlobalConstants.langEs}`);
+  }
+
+  getCredits(id: number): Observable<ArraySeriesCreditsResponse> {
+    return this.httpClient.get<ArraySeriesCreditsResponse>(`${EndPoints.serie}${id}/credits${GlobalConstants.apiKey}${GlobalConstants.langEs}`);
   }
 }

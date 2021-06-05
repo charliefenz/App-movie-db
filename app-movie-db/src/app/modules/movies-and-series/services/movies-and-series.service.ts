@@ -2,18 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EndPoints } from 'src/app/common/endpoints';
-import { GenresResponse } from '../models/genresResponse';
+import { GenresResponse } from '../models/genres-response';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GenresService {
+export class MoviesAndSeriesService {
 
   constructor(private httpClient: HttpClient) { }
-
-  getGenres(): Observable<GenresResponse> {
-    return this.httpClient.get<GenresResponse>(EndPoints.genres);
-  }
 
   getGenresById(ids: number[]): string[] {
     const genres$ = this.getGenres();
@@ -26,6 +22,11 @@ export class GenresService {
     });
     return result;
   }
+
+  private getGenres(): Observable<GenresResponse> {
+    return this.httpClient.get<GenresResponse>(EndPoints.genres);
+  }
+
 
 
 }

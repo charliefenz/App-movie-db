@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { Network } from '../../models/networks';
+import { SeriesCast } from '../../models/serie-cast';
 import { SerieDetail } from '../../models/serie-detail';
 import { SeriesService } from '../../services/series.service';
 
@@ -14,6 +15,7 @@ import { SeriesService } from '../../services/series.service';
 export class SerieDetailComponent implements OnInit {
 
   serie$: Observable<SerieDetail>;
+  cast: SeriesCast[];
   backdropPath: string;
   posterPath: string;
   networks: Network[] = [];
@@ -34,6 +36,7 @@ export class SerieDetailComponent implements OnInit {
       if (res.homepage !== '') {
         this.hasWebPage = true;
       }
+      this.getCredits(res.id);
     });
   }
 
@@ -47,4 +50,7 @@ export class SerieDetailComponent implements OnInit {
     this.networks.push(network);
   }
 
+  private getCredits(id: number): void {
+    const credits$ = this.seriesService.getCredits(id).subscribe((res) => this.cast = res.cast);
+  }
 }

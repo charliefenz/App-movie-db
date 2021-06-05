@@ -1,9 +1,9 @@
-import { Cast } from './movie-cast';
-import { Crew } from './movie-crew';
+import { MovieCast } from './movie-cast';
+import { Crew } from '../../movies-and-series/models/crew';
 
 export interface ArrayMovieCreditsResponse {
     id: number;
-    cast: Cast[];
+    cast: MovieCast[];
     crew: Crew[];
 }
 

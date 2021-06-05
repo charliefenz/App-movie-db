@@ -4,7 +4,7 @@ import { MovieDetail } from '../../models/movie-detail';
 import { MoviesService } from '../../services/movies.service';
 import { Observable } from 'rxjs';
 import { GlobalConstants } from 'src/app/common/global-constants';
-import { Cast } from '../../models/movie-cast';
+import { MovieCast } from '../../models/movie-cast';
 
 @Component({
   selector: 'app-movie-detail',
@@ -14,7 +14,7 @@ import { Cast } from '../../models/movie-cast';
 export class MovieDetailComponent implements OnInit {
 
   movie$: Observable<MovieDetail>;
-  cast: Cast[];
+  cast: MovieCast[];
   backdropPath: string;
   posterPath: string;
   hasWebpage = false;
@@ -26,7 +26,7 @@ export class MovieDetailComponent implements OnInit {
       this.movie$ = this.moviesService.getMovie(params.id);
     });
 
-    // Completee backdropPath, posterPath and determining if it has web
+    // Complete backdropPath, posterPath and determining if it has web
     this.movie$.subscribe((res) => {
       this.backdropPath = `Url(${GlobalConstants.imagesBackdropUrl + res.backdrop_path})`;
       this.posterPath = GlobalConstants.imagesPosterUrl + res.poster_path;

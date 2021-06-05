@@ -16,9 +16,9 @@
             <div class="detail-line">
                 <span class="detail-label">Reparto principal: </span>
                 <span *ngFor="let actor of cast; let i=index">
-                    <span *ngIf="i == 1">{{actor.name}}</span>
-                    <span *ngIf="i == 2">, {{actor.name}} </span>
-                    <span *ngIf="i == 3">y {{actor.name}}</span>
+                    <span *ngIf="i == 0">{{actor.name}}</span>
+                    <span *ngIf="i == 1">, {{actor.name}} </span>
+                    <span *ngIf="i == 2">y {{actor.name}}</span>
                 </span>
             </div>
             <div class="detail-line">
