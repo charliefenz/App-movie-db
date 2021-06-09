@@ -10,6 +10,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: white;
 }
 
+.link {
+    cursor: pointer;
+    text-decoration: none;
+    color: $color-3rd;
+
+    &:focus {
+        color: $pink;
+    }
+}
+
 // TODO border-right effect for last element on width
 .popular-list-wrapper {
     display: flex;
@@ -17,22 +27,34 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     white-space: nowrap;
 }  
 
+.popular-item-card, .episode-item-card {
+    background-color: $color-2nd;
+    margin-bottom: 10px;
+}
+
 .popular-item-card {
     margin: 15px;
     width: $popular-item-width;
-    background-color: $color-2nd;
 }
 
-.popular-item-img-container {
+.popular-item-img-container, .episode-item-img-container {
     width: 100%;
     overflow: hidden;
+}
+
+.popular-item-poster-image, .episode-item-poster-image {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .popular-item-poster-image {
     width: 100%;
     height: $popular-item-width * 1.5;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+}
+
+.episode-item-poster-image {
+    width: $episode-item-img-width;
+    height: $episode-item-img-width / 1.7;
 }
 
 .popular-item-title {
@@ -125,7 +147,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .detail-line {
     font-size: 0.85em;
 
-    .detail-label, .icon, .link {
+    .detail-label, .icon {
         color: $color-2nd;
     }
 
@@ -147,7 +169,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
     .detail-title {            
         h1 {
-            font-size: 5.5vw;
+            font-size: 7.5vw;
         }
 
         h4 {
@@ -162,9 +184,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
             height: 80%;
         }
     }
-}
-
-.link {
-    cursor: pointer;
-    text-decoration: none;
 }

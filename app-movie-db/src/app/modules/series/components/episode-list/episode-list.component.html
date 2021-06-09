@@ -1,0 +1,16 @@
+<h2>Temporada {{seasonNumber}}</h2>
+<div *ngIf="season$ | async as season">
+    <div class="detail-line">
+        <span class="detail-label">Fecha de estreno: </span>
+        <span>{{season.air_date | date: 'dd/MM/YYYY'}}</span>
+    </div>
+    <div class="detail-line">
+        <span class="detail-label">Nro. Episodios: </span>
+        <span>{{season.episodes.length}}</span>
+    </div>
+    <div class="episode-list container-fluid">
+        <div class="row">
+            <app-episode-item class="col-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let episode of season.episodes" [episode]="episode" [serieName]="serienName"></app-episode-item>
+        </div>
+    </div>
+</div>

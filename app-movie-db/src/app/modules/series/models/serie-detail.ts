@@ -1,4 +1,5 @@
 import { Network } from './networks';
+import { Season } from './seasons';
 
 interface CreatedBy {
     id: number;
@@ -51,16 +52,6 @@ interface ProductionCompany {
 interface ProductionCountry {
     iso_3166_1: string;
     name: string;
-}
-
-interface Season {
-    air_date: string;
-    episode_count: number;
-    id: number;
-    name: string;
-    overview: string;
-    poster_path: string;
-    season_number: number;
 }
 
 interface SpokenLanguage {

@@ -5,6 +5,7 @@ import { EndPoints } from 'src/app/common/endpoints';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { ArraySeriesCreditsResponse } from '../models/array-series-credits-response';
 import { ArraySeriesResponse } from '../models/array-series-response';
+import { SeasonDetail } from '../models/season-detail';
 import { SerieDetail } from '../models/serie-detail';
 
 @Injectable({
@@ -24,5 +25,9 @@ export class SeriesService {
 
   getCredits(id: number): Observable<ArraySeriesCreditsResponse> {
     return this.httpClient.get<ArraySeriesCreditsResponse>(`${EndPoints.serie}${id}/credits${GlobalConstants.apiKey}${GlobalConstants.langEs}`);
+  }
+
+  getSeason(tvId: number, seasonNumber: number): Observable<SeasonDetail> {
+    return this.httpClient.get<SeasonDetail>(`${EndPoints.serie}${tvId}/season/${seasonNumber}${GlobalConstants.apiKey}${GlobalConstants.langEs}`);
   }
 }

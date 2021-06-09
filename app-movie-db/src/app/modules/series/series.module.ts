@@ -5,6 +5,8 @@ import { ListPopularSeriesComponent } from './components/list-popular-series/lis
 import { SerieItemComponent } from './components/serie-item/serie-item.component';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { SerieDetailComponent } from './components/serie-detail/serie-detail.component';
+import { EpisodeListComponent } from './components/episode-list/episode-list.component';
+import { EpisodeItemComponent } from './components/episode-item/episode-item.component';
 
 
 
@@ -12,7 +14,9 @@ import { SerieDetailComponent } from './components/serie-detail/serie-detail.com
   declarations: [
     ListPopularSeriesComponent,
     SerieItemComponent,
-    SerieDetailComponent
+    SerieDetailComponent,
+    EpisodeListComponent,
+    EpisodeItemComponent
   ],
   imports: [
     CommonModule,

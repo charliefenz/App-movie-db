@@ -41,10 +41,21 @@
             <div class="detail-line" *ngIf="hasWebpage">
                 <a class="link" href="{{serie.homepage}}" target="_blank">Sitio Web<mat-icon class="icon">open_in_new</mat-icon></a>
             </div>
+            <div class="detail-line">
+                <span class="detail-label">Temporadas: </span>
+                <span class="link" href="" *ngFor="let season of serie.seasons; let i=index">
+                    <span *ngIf="i == 0 && serie.seasons.length == 1">T{{i+1}}</span>
+                    <span *ngIf="i == 1" (click)="listEpisodes(season)">T{{i}}</span>
+                    <span *ngIf="i > 1" (click)="listEpisodes(season)">  |  T{{i}}</span>
+                </span>
+            </div>
             <div class="detail-overview-container">
                 <p>{{serie.overview}}</p>
             </div>
         </div>
+    </div>
+    <div class="seasons-container" *ngIf="showEpisodes">
+        <app-episode-list [seasonNumber]="seasonInfo.seasonNumber" [serieId]="seasonInfo.serieId"></app-episode-list>
     </div>   
 </div>
 

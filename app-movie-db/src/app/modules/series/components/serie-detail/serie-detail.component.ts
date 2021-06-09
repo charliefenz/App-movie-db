@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { Network } from '../../models/networks';
+import { Season } from '../../models/seasons';
 import { SeriesCast } from '../../models/serie-cast';
 import { SerieDetail } from '../../models/serie-detail';
 import { SeriesService } from '../../services/series.service';
@@ -20,12 +21,16 @@ export class SerieDetailComponent implements OnInit {
   posterPath: string;
   networks: Network[] = [];
   hasWebPage = false;
+  showEpisodes = false;
+  seasonInfo = {serieId: 0, seasonNumber: 0};
 
   constructor(private route: ActivatedRoute, private seriesService: SeriesService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.serie$ = this.seriesService.getSerie(params.id);
+      this.seasonInfo.serieId = params.id;
+      this.seasonInfo.seasonNumber = 0;
     });
 
     // Complete URL of backdropPath, posterPath, Networks.logo_path and determining if it has web
@@ -52,5 +57,10 @@ export class SerieDetailComponent implements OnInit {
 
   private getCredits(id: number): void {
     const credits$ = this.seriesService.getCredits(id).subscribe((res) => this.cast = res.cast);
+  }
+
+  listEpisodes(season: Season): void {
+    this.showEpisodes = true;
+    this.seasonInfo.seasonNumber = season.season_number;
   }
 }
