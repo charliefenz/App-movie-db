@@ -14,9 +14,8 @@ export class EpisodeListComponent implements OnInit, OnChanges {
   serieId: number;
   @Input()
   seasonNumber: number;
-  @Input()
-  serieName: string;
   season$: Observable<SeasonDetail>;
+  okShow: boolean;
 
   constructor(private seriesService: SeriesService) { }
 

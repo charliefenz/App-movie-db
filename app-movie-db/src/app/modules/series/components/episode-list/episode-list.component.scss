@@ -1,0 +1,10 @@
+@import 'src/app/common/variables.scss';
+
+:host {
+    .detail-line, h2 {margin-left: 12px;}
+    h2 {
+        margin-bottom: 0px;
+        color: $color-2nd;
+    }
+    .episode-list {margin-top: 12px;}
+}
