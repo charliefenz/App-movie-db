@@ -1,13 +1,13 @@
 @import 'src/app/common/variables.scss';
 
 :host {
-    .popular-item-card {padding: 0; white-space: normal;}
+    .item-card {padding: 0; white-space: normal;}
 
-    .popular-item-title-container {
+    .item-title-container {
         padding: 10px;
         * {color: $pink; margin: 0;}
         h2 {line-height: 1.2em; font-size: 0.5em; display: flex; align-items: center;}
-        .popular-item-title {
+        .item-title {
             height: 56px;
             font-weight: 400;
             color: white;

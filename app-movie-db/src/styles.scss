@@ -26,35 +26,35 @@ h2 {
 }
 
 // TODO border-right effect for last element on width
-.popular-list-wrapper {
+.list-wrapper {
     display: flex;
     overflow: auto;
     white-space: nowrap;
 }  
 
-.popular-item-card, .episode-item-card {
+.item-card, .episode-item-card {
     background-color: $color-2nd;
     margin-bottom: 10px;
 }
 
-.popular-item-card {
+.item-card {
     margin: 15px;
-    width: $popular-item-width;
+    width: $item-width;
 }
 
-.popular-item-img-container, .episode-item-img-container {
+.item-img-container, .episode-item-img-container {
     width: 100%;
     overflow: hidden;
 }
 
-.popular-item-poster-image, .episode-item-poster-image {
+.item-poster-image, .episode-item-poster-image {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
-.popular-item-poster-image {
+.item-poster-image {
     width: 100%;
-    height: $popular-item-width * 1.5;
+    height: $item-width * 1.5;
 }
 
 .episode-item-poster-image {
@@ -62,17 +62,17 @@ h2 {
     height: $episode-item-img-width / 1.7;
 }
 
-.popular-item-title {
+.item-title {
     overflow: hidden;
     color: white;
 }
 
 /* Aqui */
-.popular-item-title-container {
+.item-title-container {
     padding: 10px;
     * {color: $pink; margin: 0;}
     h2 {line-height: 1.2em; font-size: 0.5em; display: flex; align-items: center;}
-    .popular-item-title {
+    .item-title {
         height: 56px;
         font-weight: 400;
         color: white;

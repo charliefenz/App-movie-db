@@ -17,7 +17,7 @@ export class MovieDetailComponent implements OnInit {
   cast: MovieCast[];
   backdropPath: string;
   posterPath: string;
-  hasWebpage = false;
+  hasWebPage = false;
 
   constructor(private route: ActivatedRoute, private moviesService: MoviesService) { }
 
@@ -31,7 +31,7 @@ export class MovieDetailComponent implements OnInit {
       this.backdropPath = `Url(${GlobalConstants.imagesBackdropUrl + res.backdrop_path})`;
       this.posterPath = GlobalConstants.imagesPosterUrl + res.poster_path;
       if (res.homepage !== '') {
-        this.hasWebpage = true;
+        this.hasWebPage = true;
       }
       this.getCredits(res.id);
     });

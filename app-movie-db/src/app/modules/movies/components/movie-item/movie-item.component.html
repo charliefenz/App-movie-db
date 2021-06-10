@@ -1,9 +1,9 @@
-<mat-card class="popular-item-card" routerLink="{{movie.id}}">
-    <div class="popular-item-img-container">
-        <img src="{{movie.poster_path}}" alt="poster image of {{movie.title}}" class="popular-item-poster-image">
+<mat-card class="item-card" routerLink="{{movie.id}}">
+    <div class="item-img-container">
+        <img src="{{movie.poster_path}}" alt="poster image of {{movie.title}}" class="item-poster-image">
     </div>
-    <mat-card-content>
-        <h2 class="popular-item-title">{{movie.title}}</h2>
-        <p class="popular-item-rating">{{movie.vote_average}}</p>
-    </mat-card-content>
+    <mat-card-title class="item-title-container">
+        <h2 class="item-title">{{movie.title}}</h2>
+        <p class="item-rating">{{movie.vote_average}}</p>
+    </mat-card-title>
 </mat-card>
