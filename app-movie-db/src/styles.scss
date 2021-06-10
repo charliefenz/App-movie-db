@@ -10,6 +10,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: white;
 }
 
+h2 {
+    margin-bottom: 0px;
+    color: $color-2nd;
+}
+
 .link {
     cursor: pointer;
     text-decoration: none;
@@ -60,6 +65,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .popular-item-title {
     overflow: hidden;
     color: white;
+}
+
+/* Aqui */
+.popular-item-title-container {
+    padding: 10px;
+    * {color: $pink; margin: 0;}
+    h2 {line-height: 1.2em; font-size: 0.5em; display: flex; align-items: center;}
+    .popular-item-title {
+        height: 56px;
+        font-weight: 400;
+        color: white;
+    }
+
+    p {
+        font-size: 0.5em;
+        font-weight: 100;
+        margin-bottom: 10px;
+    }
+
 }
 
 .detail-backdrop {

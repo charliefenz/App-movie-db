@@ -10,6 +10,7 @@
             <img src="{{posterPath}}" alt="Poster de serie {{serie.name}}">
         </div>
         <div class="detail-info-container">
+            <!-- TODO Añadir funcionalidad para buscar por genero -->
             <mat-chip-list class="genre-list">
                 <mat-chip class="genre-chip" *ngFor="let genre of serie.genres">{{genre.name}}</mat-chip>
             </mat-chip-list>
@@ -35,19 +36,18 @@
                 <span>{{serie.first_air_date | date: 'YYYY'}}</span>
             </div>
             <div class="detail-line">
-                <span class="detail-label">Rating: </span>
+                <span class="detail-label">Valoración: </span>
                 <span>{{serie.vote_average}}</span>
-            </div>
-            <div class="detail-line" *ngIf="hasWebpage">
-                <a class="link" href="{{serie.homepage}}" target="_blank">Sitio Web<mat-icon class="icon">open_in_new</mat-icon></a>
             </div>
             <div class="detail-line">
                 <span class="detail-label">Temporadas: </span>
-                <span class="link" href="" *ngFor="let season of serie.seasons; let i=index">
-                    <span *ngIf="i == 0 && serie.seasons.length == 1">T{{i+1}}</span>
-                    <span *ngIf="i == 1" (click)="listEpisodes(season)">T{{i}}</span>
-                    <span *ngIf="i > 1" (click)="listEpisodes(season)">  |  T{{i}}</span>
+                <span class="link" *ngFor="let season of serie.seasons">
+                    <span *ngIf="season.season_number == 1" (click)="listEpisodes(season)">T{{season.season_number}}</span>
+                    <span *ngIf="season.season_number > 1" (click)="listEpisodes(season)">  |  T{{season.season_number}}</span>
                 </span>
+            </div>
+            <div class="detail-line" *ngIf="hasWebPage">
+                <a class="link" href="{{serie.homepage}}" target="_blank">Sitio Web<mat-icon class="icon">open_in_new</mat-icon></a>
             </div>
             <div class="detail-overview-container">
                 <p>{{serie.overview}}</p>
