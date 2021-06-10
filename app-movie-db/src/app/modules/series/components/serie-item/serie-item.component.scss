@@ -1,12 +1,23 @@
-:host {
-    .popular-item-card {
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-    }
+@import 'src/app/common/variables.scss';
 
-    .popular-item, .popular-item-title {
-        font-size: 0.8em;
-        margin: 0 5px;
+:host {
+    .popular-item-card {padding: 0; white-space: normal;}
+
+    .popular-item-title-container {
+        padding: 10px;
+        * {color: $pink; margin: 0;}
+        h2 {line-height: 1.2em; font-size: 0.5em; display: flex; align-items: center;}
+        .popular-item-title {
+            height: 56px;
+            font-weight: 400;
+            color: white;
+        }
+
+        p {
+            font-size: 0.5em;
+            font-weight: 100;
+            margin-bottom: 10px;
+        }
+    
     }
 }

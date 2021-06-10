@@ -2,8 +2,8 @@
     <div class="popular-item-img-container">
         <img src="{{serie.poster_path}}" alt="poster image of {{serie.name}}" class="popular-item-poster-image">
     </div>
-    <mat-card-content>
+    <mat-card-title class="popular-item-title-container">
         <h2 class="popular-item-title">{{serie.name}}</h2>
-        <p class="popular-item-rating">{{serie.vote_average}}</p>
-    </mat-card-content>
+        <p>{{mainNetwork}}</p>
+    </mat-card-title>
 </mat-card>
