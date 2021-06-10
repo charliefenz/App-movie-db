@@ -10,7 +10,9 @@
     </div>
     <div class="episode-list container-fluid">
         <div class="row">
-            <app-episode-item class="col-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let episode of season.episodes" [episode]="episode" [serieName]="serienName"></app-episode-item>
+            <div class="col-12 col-sm-4 col-md-3 col-lg-2" *ngFor="let episode of season.episodes">
+                <app-episode-item *ngIf="!episode.name.includes('Episodio') && episode.still_path !== null" [episode]="episode"></app-episode-item>
+            </div>
         </div>
     </div>
 </div>

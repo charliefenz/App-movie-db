@@ -14,7 +14,9 @@ export class EpisodeItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.episode.still_path = `${GlobalConstants.imagesPosterUrl}${this.episode.still_path}`;
+    if (this.episode.still_path !== null) {
+      this.episode.still_path = `${GlobalConstants.imagesPosterUrl}${this.episode.still_path}`;
+    }
   }
 
 }
