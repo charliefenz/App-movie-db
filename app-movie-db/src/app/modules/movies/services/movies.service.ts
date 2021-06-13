@@ -25,4 +25,8 @@ export class MoviesService {
   getCredits(id: number): Observable<ArrayMovieCreditsResponse> {
     return this.httpClient.get<ArrayMovieCreditsResponse>(`${EndPoints.movie}${id}/credits${GlobalConstants.apiKey}${GlobalConstants.langEs}`);
   }
+
+  getTopRatedMovies(): Observable<ArrayMoviesResponse> {
+    return this.httpClient.get<ArrayMoviesResponse>(EndPoints.topRatedMovies);
+  }
 }

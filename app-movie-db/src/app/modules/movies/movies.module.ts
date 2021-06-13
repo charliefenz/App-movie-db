@@ -5,13 +5,17 @@ import { ListPopularMoviesComponent } from './components/list-popular-movies/lis
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import { ListTopRatedMoviesComponent } from './components/list-top-rated-movies/list-top-rated-movies.component';
+import { MoviesMainPageComponent } from './components/movies-main-page/movies-main-page.component';
 
 
 @NgModule({
   declarations: [
     ListPopularMoviesComponent,
     MovieItemComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    ListTopRatedMoviesComponent,
+    MoviesMainPageComponent
   ],
   imports: [
     CommonModule,
