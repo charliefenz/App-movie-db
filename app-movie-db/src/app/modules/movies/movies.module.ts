@@ -7,6 +7,7 @@ import { MaterialModule } from 'src/app/modules/material/material.module';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { ListTopRatedMoviesComponent } from './components/list-top-rated-movies/list-top-rated-movies.component';
 import { MoviesMainPageComponent } from './components/movies-main-page/movies-main-page.component';
+import { ListMoviesByGenreComponent } from './components/list-movies-by-genre/list-movies-by-genre.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MoviesMainPageComponent } from './components/movies-main-page/movies-ma
     MovieItemComponent,
     MovieDetailComponent,
     ListTopRatedMoviesComponent,
-    MoviesMainPageComponent
+    MoviesMainPageComponent,
+    ListMoviesByGenreComponent
   ],
   imports: [
     CommonModule,

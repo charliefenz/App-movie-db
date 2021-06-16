@@ -4,6 +4,8 @@ export class GlobalConstants {
     public static langEs = '&language=es-ES';
     public static imagesPosterUrl = 'https://image.tmdb.org/t/p/w500';
     public static imagesBackdropUrl = 'https://image.tmdb.org/t/p/w1280';
+    public static genreQuery = 'with_genres=';
+ 
 }
 
 

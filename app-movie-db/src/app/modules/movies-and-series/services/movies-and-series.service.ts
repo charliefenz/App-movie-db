@@ -11,7 +11,8 @@ export class MoviesAndSeriesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getGenresById(ids: number[]): string[] {
+  /* FIXME see if this can be useful */
+  /* getGenresById(ids: number[]): string[] {
     const genres$ = this.getGenres();
     const result: string[] = [];
     ids.forEach((idElement) => {
@@ -25,7 +26,7 @@ export class MoviesAndSeriesService {
 
   private getGenres(): Observable<GenresResponse> {
     return this.httpClient.get<GenresResponse>(EndPoints.genres);
-  }
+  } */
 
 
 
