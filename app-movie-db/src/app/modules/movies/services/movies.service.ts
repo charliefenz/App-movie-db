@@ -6,7 +6,7 @@ import { ArrayMoviesResponse } from '../models/array-movies-response';
 import { MovieDetail } from '../models/movie-detail';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { ArrayMovieCreditsResponse } from '../models/array-movie-credits-response';
-import { ArrayMovieGenresResponse } from '../models/array-movie-genres-response';
+import { ArrayGenresResponse } from '../../../common/array-genres-response';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +31,8 @@ export class MoviesService {
     return this.httpClient.get<ArrayMoviesResponse>(EndPoints.topRatedMovies);
   }
 
-  getMovieGenres(): Observable<ArrayMovieGenresResponse> {
-    return this.httpClient.get<ArrayMovieGenresResponse>(`${EndPoints.movieGenres}`);
+  getMovieGenres(): Observable<ArrayGenresResponse> {
+    return this.httpClient.get<ArrayGenresResponse>(`${EndPoints.movieGenres}`);
   }
 
   getMoviesByGenres(genreId: number): Observable<ArrayMoviesResponse> {

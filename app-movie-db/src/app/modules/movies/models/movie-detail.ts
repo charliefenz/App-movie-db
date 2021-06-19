@@ -1,4 +1,4 @@
-import { Genre } from './movie-genre';
+import { Genre } from '../../../common/genre';
 
 export interface MovieDetail {
     adult: boolean;
