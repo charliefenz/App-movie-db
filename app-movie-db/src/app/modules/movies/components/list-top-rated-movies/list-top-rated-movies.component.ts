@@ -10,9 +10,9 @@ import { MoviesService } from '../../services/movies.service';
 })
 export class ListTopRatedMoviesComponent implements OnInit {
 
-  constructor(private moviesService: MoviesService) { }
-
   topRatedMovies$: Observable<ArrayMoviesResponse>;
+
+  constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
     this.topRatedMovies$ = this.moviesService.getTopRatedMovies();

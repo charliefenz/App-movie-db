@@ -8,4 +8,5 @@ export class EndPoints {
     public static movieDiscover = `${GlobalConstants.basicUrl}discover/movie`;
     public static movie = `${GlobalConstants.basicUrl}movie/`;
     public static serie = `${GlobalConstants.basicUrl}tv/`;
+    public static topRatedSeries = `${GlobalConstants.basicUrl}tv/top_rated/${GlobalConstants.apiKey}${GlobalConstants.langEs}`;
 }

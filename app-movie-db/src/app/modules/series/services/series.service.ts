@@ -30,4 +30,8 @@ export class SeriesService {
   getSeason(tvId: number, seasonNumber: number): Observable<SeasonDetail> {
     return this.httpClient.get<SeasonDetail>(`${EndPoints.serie}${tvId}/season/${seasonNumber}${GlobalConstants.apiKey}${GlobalConstants.langEs}`);
   }
+
+  getTopRatedSeries(): Observable<ArraySeriesResponse> {
+    return this.httpClient.get<ArraySeriesResponse>(EndPoints.topRatedSeries);
+  }
 }
