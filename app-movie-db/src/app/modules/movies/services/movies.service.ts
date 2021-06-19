@@ -35,7 +35,7 @@ export class MoviesService {
     return this.httpClient.get<ArrayMovieGenresResponse>(`${EndPoints.movieGenres}`);
   }
 
-  getMoviesByGenres(movieId: number): Observable<ArrayMoviesResponse> {
-    return this.httpClient.get<ArrayMoviesResponse>(`${EndPoints.movieDiscover}${GlobalConstants.apiKey}${GlobalConstants.langEs}&${GlobalConstants.genreQuery}${movieId}`);
+  getMoviesByGenres(genreId: number): Observable<ArrayMoviesResponse> {
+    return this.httpClient.get<ArrayMoviesResponse>(`${EndPoints.movieDiscover}${GlobalConstants.apiKey}${GlobalConstants.langEs}&${GlobalConstants.sortDescQuery}&${GlobalConstants.genreQuery}${genreId}`);
   }
 }

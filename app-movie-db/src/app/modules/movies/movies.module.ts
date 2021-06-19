@@ -8,6 +8,7 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
 import { ListTopRatedMoviesComponent } from './components/list-top-rated-movies/list-top-rated-movies.component';
 import { MoviesMainPageComponent } from './components/movies-main-page/movies-main-page.component';
 import { ListMoviesByGenreComponent } from './components/list-movies-by-genre/list-movies-by-genre.component';
+import { ListMoviesByGenreSelectorComponent } from './components/list-movies-by-genre-selector/list-movies-by-genre-selector.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ListMoviesByGenreComponent } from './components/list-movies-by-genre/li
     MovieDetailComponent,
     ListTopRatedMoviesComponent,
     MoviesMainPageComponent,
-    ListMoviesByGenreComponent
+    ListMoviesByGenreComponent,
+    ListMoviesByGenreSelectorComponent
   ],
   imports: [
     CommonModule,

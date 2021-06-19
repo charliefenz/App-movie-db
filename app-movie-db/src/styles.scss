@@ -207,3 +207,11 @@ h2 {
         }
     }
 }
+
+.mat-form-field-appearance-legacy .mat-form-field-underline, .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: $color-2nd !important;
+}
+
+.mat-select-value, .mat-option {
+    color: $color-2nd !important;
+}

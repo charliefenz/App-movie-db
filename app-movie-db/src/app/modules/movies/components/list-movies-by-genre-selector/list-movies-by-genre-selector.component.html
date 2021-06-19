@@ -1,0 +1,4 @@
+<div class="list-wrapper" *ngIf="moviesByGenre$ | async as moviesByGenre$">
+    <app-movie-item  *ngFor="let movie of moviesByGenre$.results" [movie]="movie">
+    </app-movie-item>
+</div>

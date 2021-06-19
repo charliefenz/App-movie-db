@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ArrayMovieGenresResponse } from '../../models/array-movie-genres-response';
 import { ArrayMoviesResponse } from '../../models/array-movies-response';
@@ -13,15 +14,11 @@ export class ListMoviesByGenreComponent implements OnInit {
 
   movieGenres$: Observable<ArrayMovieGenresResponse>;
   genresSelected$: Observable<ArrayMoviesResponse>;
-  genreSelected = 0;
+  genreToDisplay = 0;
 
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
     this.movieGenres$ = this.moviesService.getMovieGenres();
-  }
-
-  change(event): void {
-    console.log('changed');
   }
 }
