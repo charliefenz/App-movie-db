@@ -10,6 +10,7 @@ import { EpisodeItemComponent } from './components/episode-item/episode-item.com
 import { ListSeriesByGenreComponent } from './components/list-series-by-genre/list-series-by-genre.component';
 import { SeriesMainPageComponent } from './components/series-main-page/series-main-page.component';
 import { ListTopRatedSeriesComponent } from './components/list-top-rated-series/list-top-rated-series.component';
+import { ListSeriesByGenreSelectorComponent } from './components/list-series-by-genre-selector/list-series-by-genre-selector.component';
 
 
 
@@ -22,7 +23,8 @@ import { ListTopRatedSeriesComponent } from './components/list-top-rated-series/
     EpisodeItemComponent,
     ListSeriesByGenreComponent,
     SeriesMainPageComponent,
-    ListTopRatedSeriesComponent
+    ListTopRatedSeriesComponent,
+    ListSeriesByGenreSelectorComponent
   ],
   imports: [
     CommonModule,

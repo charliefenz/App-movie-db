@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ArrayGenresResponse } from 'src/app/common/array-genres-response';
 import { EndPoints } from 'src/app/common/endpoints';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { ArraySeriesCreditsResponse } from '../models/array-series-credits-response';
@@ -33,5 +34,13 @@ export class SeriesService {
 
   getTopRatedSeries(): Observable<ArraySeriesResponse> {
     return this.httpClient.get<ArraySeriesResponse>(EndPoints.topRatedSeries);
+  }
+
+  getSerieGenres(): Observable<ArrayGenresResponse> {
+    return this.httpClient.get<ArrayGenresResponse>(`${EndPoints.serieGenres}`);
+  }
+
+  getSeriesByGenres(genreId: number): Observable<ArraySeriesResponse> {
+    return this.httpClient.get<ArraySeriesResponse>(`${EndPoints.serieDiscover}${GlobalConstants.apiKey}${GlobalConstants.langEs}&${GlobalConstants.sortDescQuery}&${GlobalConstants.genreQuery}${genreId}`);
   }
 }
