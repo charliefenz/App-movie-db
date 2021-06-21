@@ -6,7 +6,6 @@
         <div class="menu-button" routerLink="movies" routerLinkActive="active">Pelis</div>
         <div class="menu-button" routerLink="series" routerLinkActive="active">Series</div>
     </div>
-    <div class="menu-button">
-        <mat-icon class="color-white">search</mat-icon>
-    </div>
+    <app-search-bar class="menu-button" [clickOutsideSearch]="clickOutsideSearch">
+    </app-search-bar>
 </div>
