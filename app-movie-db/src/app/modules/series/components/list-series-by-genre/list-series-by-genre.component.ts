@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ArrayGenresResponse } from 'src/app/common/array-genres-response';
+import { ArrayGenresResponse } from 'src/app/common/models/array-genres-response';
 import { ArraySeriesResponse } from '../../models/array-series-response';
 import { SeriesService } from '../../services/series.service';
 

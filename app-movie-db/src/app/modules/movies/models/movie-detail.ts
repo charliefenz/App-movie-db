@@ -1,4 +1,4 @@
-import { Genre } from '../../../common/genre';
+import { Genre } from '../../../common/models/genre';
 
 export interface MovieDetail {
     adult: boolean;

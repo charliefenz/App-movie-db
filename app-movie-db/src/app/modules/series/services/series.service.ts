@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ArrayGenresResponse } from 'src/app/common/array-genres-response';
+import { ArrayGenresResponse } from 'src/app/common/models/array-genres-response';
 import { EndPoints } from 'src/app/common/endpoints';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { ArraySeriesCreditsResponse } from '../models/array-series-credits-response';
@@ -42,5 +42,10 @@ export class SeriesService {
 
   getSeriesByGenres(genreId: number): Observable<ArraySeriesResponse> {
     return this.httpClient.get<ArraySeriesResponse>(`${EndPoints.serieDiscover}${GlobalConstants.apiKey}${GlobalConstants.langEs}&${GlobalConstants.sortDescQuery}&${GlobalConstants.genreQuery}${genreId}`);
+  }
+
+  searchSeries(inputSearch: string, page: number): Observable<ArraySeriesResponse> {
+    const codedSearch = encodeURI(inputSearch);
+    return this.httpClient.get<ArraySeriesResponse>(`${EndPoints.searchSerie}&page=${page}&${codedSearch}`);
   }
 }

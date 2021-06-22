@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { ArrayGenresResponse } from '../../../../common/array-genres-response';
+import { ArrayGenresResponse } from '../../../../common/models/array-genres-response';
 import { ArrayMoviesResponse } from '../../models/array-movies-response';
 import { MoviesService } from '../../services/movies.service';
 

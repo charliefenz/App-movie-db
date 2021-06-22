@@ -6,7 +6,7 @@ import { ArrayMoviesResponse } from '../models/array-movies-response';
 import { MovieDetail } from '../models/movie-detail';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { ArrayMovieCreditsResponse } from '../models/array-movie-credits-response';
-import { ArrayGenresResponse } from '../../../common/array-genres-response';
+import { ArrayGenresResponse } from '../../../common/models/array-genres-response';
 
 @Injectable({
   providedIn: 'root'
