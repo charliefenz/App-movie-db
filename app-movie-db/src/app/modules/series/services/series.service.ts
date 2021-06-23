@@ -44,8 +44,8 @@ export class SeriesService {
     return this.httpClient.get<ArraySeriesResponse>(`${EndPoints.serieDiscover}${GlobalConstants.apiKey}${GlobalConstants.langEs}&${GlobalConstants.sortDescQuery}&${GlobalConstants.genreQuery}${genreId}`);
   }
 
-  searchSeries(inputSearch: string, page: number): Observable<ArraySeriesResponse> {
-    const codedSearch = encodeURI(inputSearch);
-    return this.httpClient.get<ArraySeriesResponse>(`${EndPoints.searchSerie}&page=${page}&${codedSearch}`);
+   getSearchSeries(page: number, query: string): Observable<ArraySeriesResponse> {
+    const codedSearch = encodeURI(query);
+    return this.httpClient.get<ArraySeriesResponse>(`${EndPoints.searchSerie}&page=${page}&query=${codedSearch}`);
   }
 }

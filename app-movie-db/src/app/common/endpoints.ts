@@ -12,4 +12,5 @@ export class EndPoints {
     public static topRatedSeries = `${GlobalConstants.basicUrl}tv/top_rated/${GlobalConstants.apiKey}${GlobalConstants.langEs}`;
     public static serieGenres = `${GlobalConstants.basicUrl}genre/tv/list${GlobalConstants.apiKey}${GlobalConstants.langEs}`;
     public static searchSerie = `${GlobalConstants.basicUrl}search/tv${GlobalConstants.apiKey}${GlobalConstants.langEs}`;
+    public static searchMovie = `${GlobalConstants.basicUrl}search/movie${GlobalConstants.apiKey}${GlobalConstants.langEs}`;
 }

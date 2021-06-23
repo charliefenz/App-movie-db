@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { SearchReturn } from 'src/app/common/models/search-return';
-import { MoviesService } from 'src/app/modules/movies/services/movies.service';
 import { SerieListResult } from 'src/app/modules/series/models/serie-list-result';
 import { SeriesService } from 'src/app/modules/series/services/series.service';
 
@@ -15,9 +14,10 @@ export class SearchBarComponent implements OnInit, OnChanges {
   clickOutsideSearch: boolean;
   inputSearch: boolean;
   valueToSearch: string;
+  searchTotalPages = 2;
   searchReturn: SearchReturn[] = [];
 
-  constructor(private moviesService: MoviesService, private seriesService: SeriesService) { }
+  constructor(private seriesService: SeriesService) { }
 
   ngOnInit(): void {
     this.inputSearch = false;
@@ -40,7 +40,27 @@ export class SearchBarComponent implements OnInit, OnChanges {
     this.inputSearch = false;
   }
 
-  getSearch(resArray: SerieListResult[], inputType: string): void {
+  search(): void {
+    let pagesToSearch: number;
+    const totalPages$ = this.seriesService.getSearchSeries(1, this.valueToSearch);
+    totalPages$.subscribe((resTotalPages) => {
+      console.log(resTotalPages.total_pages);
+      if (this.searchTotalPages <= resTotalPages.total_pages) {
+      pagesToSearch = this.searchTotalPages;
+      } else {
+        pagesToSearch = resTotalPages.total_pages;
+      }
+      for (let i = 1; i <= pagesToSearch; i++) {
+        const seriesSearch$ = this.seriesService.getSearchSeries(i, this.valueToSearch);
+        seriesSearch$.subscribe((resSeriesSearch) => {
+          this.searchReturn = this.searchReturn.concat(this.createSearchReturnArray(resSeriesSearch.results, 'tv'));
+        });
+      }
+    });
+  }
+
+  private createSearchReturnArray(resArray: SerieListResult[], inputType: string): SearchReturn[] {
+    const response: SearchReturn[] = [];
     for (const resObject of resArray) {
       const searchObject: SearchReturn = {
         type: inputType,
@@ -49,22 +69,8 @@ export class SearchBarComponent implements OnInit, OnChanges {
         popularity: resObject.popularity,
         backdrop_path: resObject.backdrop_path
       };
-      this.searchReturn.push(searchObject);
+      response.push(searchObject);
     }
-  }
-
-  search(): void {
-    /* let numPag: number;
-    const maxPagLength = 3;
-    this.seriesService.searchSeries(this.valueToSearch, 1).subscribe((res) => numPag = res.total_pages);
-    if (numPag > 1) {
-      for (let i = 1; i < maxPagLength; i++) {
-        // Me quede aquí. En hacer la prueba de este bucle de subscripcion
-        let searchSeries$ = this.seriesService.searchSeries(this.valueToSearch, i);
-        searchSeries$.subscribe((resArray) => {
-          this.getSearch(resArray.results, 'tv');
-        });
-      }
-    } */
+    return response;
   }
 }

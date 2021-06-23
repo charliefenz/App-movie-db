@@ -6,7 +6,6 @@ export class GlobalConstants {
     public static imagesBackdropUrl = 'https://image.tmdb.org/t/p/w1280';
     public static genreQuery = 'with_genres=';
     public static sortDescQuery = 'sort_by=popularity.desc';
-    public static searchQuery = 'query=';
 }
 
 
