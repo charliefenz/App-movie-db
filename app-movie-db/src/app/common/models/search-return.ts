@@ -1,7 +1,7 @@
 export interface SearchReturn {
     type: string;
     id: number;
-    name: string;
+    nameOrTitle: string;
     backdrop_path: string;
     popularity: number;
 }
