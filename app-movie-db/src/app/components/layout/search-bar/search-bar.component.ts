@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SearchReturn } from 'src/app/common/models/search-return';
+import { SearchReturn } from 'src/app/modules/search/models/search-return';
 
 @Component({
   selector: 'app-search-bar',
