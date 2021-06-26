@@ -1,4 +1,4 @@
-import { Crew } from '../../movies-and-series/models/crew';
+import { Crew } from '../../../common/models/crew';
 import { SeriesCast } from './serie-cast';
 
 export interface ArraySeriesCreditsResponse {

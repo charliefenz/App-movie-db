@@ -1,5 +1,5 @@
 import { MovieCast } from './movie-cast';
-import { Crew } from '../../movies-and-series/models/crew';
+import { Crew } from '../../../common/models/crew';
 
 export interface ArrayMovieCreditsResponse {
     id: number;

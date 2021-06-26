@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GlobalConstants } from 'src/app/common/global-constants';
+import { GlobalConstants } from 'src/app/common/classes/global-constants';
 import { SearchReturn } from 'src/app/modules/search/models/search-return';
 import { MoviesService } from 'src/app/modules/movies/services/movies.service';
 import { SeriesService } from 'src/app/modules/series/services/series.service';

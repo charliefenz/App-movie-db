@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GlobalConstants } from 'src/app/common/global-constants';
+import { GlobalConstants } from 'src/app/common/classes/global-constants';
 import { Episode } from '../../models/episode';
 
 @Component({

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieDetail } from '../../models/movie-detail';
 import { MoviesService } from '../../services/movies.service';
 import { Observable } from 'rxjs';
-import { GlobalConstants } from 'src/app/common/global-constants';
+import { GlobalConstants } from 'src/app/common/classes/global-constants';
 import { MovieCast } from '../../models/movie-cast';
 
 @Component({

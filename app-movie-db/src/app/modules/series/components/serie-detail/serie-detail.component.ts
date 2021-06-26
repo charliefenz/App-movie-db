@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { GlobalConstants } from 'src/app/common/global-constants';
+import { GlobalConstants } from 'src/app/common/classes/global-constants';
 import { Network } from '../../models/networks';
 import { Season } from '../../models/seasons';
 import { SeriesCast } from '../../models/serie-cast';

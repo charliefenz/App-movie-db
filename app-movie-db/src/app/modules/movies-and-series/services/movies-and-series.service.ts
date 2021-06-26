@@ -1,8 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { EndPoints } from 'src/app/common/endpoints';
-import { GenresResponse } from '../models/genres-response';
 
 @Injectable({
   providedIn: 'root'

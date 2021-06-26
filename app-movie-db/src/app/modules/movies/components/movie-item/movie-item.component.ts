@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MovieListResult } from '../../models/movie-list-result';
-import { GlobalConstants } from 'src/app/common/global-constants';
+import { GlobalConstants } from 'src/app/common/classes/global-constants';
 import { MoviesAndSeriesService } from 'src/app/modules/movies-and-series/services/movies-and-series.service';
 
 @Component({
