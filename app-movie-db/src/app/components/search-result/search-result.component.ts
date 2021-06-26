@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { GlobalConstants } from 'src/app/common/global-constants';
 import { SearchReturn } from 'src/app/common/models/search-return';
 import { MoviesService } from 'src/app/modules/movies/services/movies.service';
 import { SeriesService } from 'src/app/modules/series/services/series.service';
@@ -70,27 +71,38 @@ export class SearchResultComponent implements OnInit {
   }
 
   private createSearchReturnArray(resArray: any, inputType: string): SearchReturn[] {
+    let posterPath: string;
     const response: SearchReturn[] = [];
     // If statement to accurately ask for the title or the name depending on wether it is treating a series or a movie
     if (inputType === 'tv') {
       for (const resObject of resArray) {
+        if (resObject.poster_path !== null) {
+          posterPath = GlobalConstants.imagesPosterUrl + resObject.poster_path;
+        } else {
+          posterPath = '../../../assets/images/no-image.png';
+        }
         const searchObject: SearchReturn = {
           type: inputType,
           id: resObject.id,
           nameOrTitle: resObject.name,
           popularity: resObject.popularity,
-          backdrop_path: resObject.backdrop_path
+          poster_path: posterPath
         };
         response.push(searchObject);
       }
     } else {
       for (const resObject of resArray) {
+        if (resObject.poster_path !== null) {
+          posterPath = GlobalConstants.imagesPosterUrl + resObject.poster_path;
+        } else {
+          posterPath = '../../../assets/images/no-image.png';
+        }
         const searchObject: SearchReturn = {
           type: inputType,
           id: resObject.id,
           nameOrTitle: resObject.title,
           popularity: resObject.popularity,
-          backdrop_path: resObject.backdrop_path
+          poster_path: posterPath
         };
         response.push(searchObject);
       }

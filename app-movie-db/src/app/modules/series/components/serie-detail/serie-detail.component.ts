@@ -36,7 +36,11 @@ export class SerieDetailComponent implements OnInit {
     // Complete URL of backdropPath, posterPath, Networks.logo_path and determining if it has web
     this.serie$.subscribe((res) => {
       this.backdropPath = `Url(${GlobalConstants.imagesBackdropUrl + res.backdrop_path})`;
-      this.posterPath = `${GlobalConstants.imagesPosterUrl + res.poster_path}`;
+      if (res.poster_path !== null) {
+        this.posterPath = GlobalConstants.imagesPosterUrl + res.poster_path;
+      } else {
+        this.posterPath = '../../../../assets/images/no-image.png';
+      }
       for (const item of res.networks) { this.fillNetworks(item); }
       if (res.homepage !== '') {
         this.hasWebPage = true;

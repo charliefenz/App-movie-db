@@ -29,7 +29,11 @@ export class MovieDetailComponent implements OnInit {
     // Complete backdropPath, posterPath and determining if it has web
     this.movie$.subscribe((res) => {
       this.backdropPath = `Url(${GlobalConstants.imagesBackdropUrl + res.backdrop_path})`;
-      this.posterPath = GlobalConstants.imagesPosterUrl + res.poster_path;
+      if (res.poster_path !== null) {
+        this.posterPath = GlobalConstants.imagesPosterUrl + res.poster_path;
+      } else {
+        this.posterPath = '../../../../assets/images/no-image.png';
+      }
       if (res.homepage !== '') {
         this.hasWebPage = true;
       }
