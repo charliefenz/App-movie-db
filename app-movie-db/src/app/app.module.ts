@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FormsModule } from '@angular/forms';
 import { SearchResultComponent } from './components/search-result/search-result.component';
+import { SearchItemComponent } from './components/search-item/search-item.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SearchResultComponent } from './components/search-result/search-result.
     HeaderComponent,
     FooterComponent,
     SearchBarComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    SearchItemComponent
   ],
   imports: [
     BrowserModule,
