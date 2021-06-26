@@ -1,8 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchReturn } from 'src/app/common/models/search-return';
-import { GeneralService } from 'src/app/modules/general/services/general.service';
-import { SeriesService } from 'src/app/modules/series/services/series.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -18,12 +16,7 @@ export class SearchBarComponent implements OnInit, OnChanges {
   searchTotalPages = 2;
   searchReturn: SearchReturn[] = [];
 
-  constructor(
-    private seriesService: SeriesService,
-    private generalService: GeneralService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.inputSearch = false;
