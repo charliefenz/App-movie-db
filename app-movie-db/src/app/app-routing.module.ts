@@ -6,7 +6,9 @@ const routes: Routes = [
   {path: '', loadChildren: () => import('./modules/movies-and-series/movies-and-series.module').then((m) => m.MoviesAndSeriesModule)},
   {path: 'movies', loadChildren: () => import('./modules/movies/movies.module').then((m) => m.MoviesModule)},
   {path: 'series', loadChildren: () => import('./modules/series/series.module').then((m) => m.SeriesModule)},
-  {path: 'search', component: SearchResultComponent}
+  {path: 'search', component: SearchResultComponent},
+  {path: 'search/movies', loadChildren: () => import('./modules/movies/movies.module').then((m) => m.MoviesModule)},
+  {path: 'search/series', loadChildren: () => import('./modules/series/series.module').then((m) => m.SeriesModule)}
 ];
 
 @NgModule({
