@@ -1,0 +1,20 @@
+<div *ngIf="itemType === 'movie'">
+    <mat-card class="item-card" routerLink="/movies/{{movie.id}}">
+        <div class="item-img-container">
+            <img src="{{movie.poster_path}}" alt="poster image of {{movie.title}}" class="item-poster-image">
+        </div>
+        <mat-card-title class="item-title-container">
+            <h2 class="item-title">{{movie.title}}</h2>
+        </mat-card-title>
+    </mat-card>
+</div>
+<div *ngIf="itemType === 'serie'">
+    <mat-card class="item-card" routerLink="/series/{{serie.id}}">
+        <div class="item-img-container">
+            <img src="{{serie.poster_path}}" alt="poster image of {{serie.name}}" class="item-poster-image">
+        </div>
+        <mat-card-title class="item-title-container">
+            <h2 class="item-title">{{serie.name}}</h2>
+        </mat-card-title>
+    </mat-card>
+</div>

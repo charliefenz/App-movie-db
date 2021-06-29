@@ -43,4 +43,8 @@ export class MoviesService {
     const codedSearch = encodeURI(query);
     return this.httpClient.get<ArrayMoviesResponse>(`${EndPoints.searchMovie}&page=${page}&query=${codedSearch}`);
   }
+
+  getTrendingMovies(): Observable<ArrayMoviesResponse> {
+    return this.httpClient.get<ArrayMoviesResponse>(EndPoints.trendingMovie);
+  }
 }

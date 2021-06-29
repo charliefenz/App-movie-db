@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MovieListResult } from '../../models/movie-list-result';
 import { GlobalConstants } from 'src/app/common/classes/global-constants';
-import { MoviesAndSeriesService } from 'src/app/modules/movies-and-series/services/movies-and-series.service';
 
 @Component({
   selector: 'app-movie-item',
@@ -14,7 +13,7 @@ export class MovieItemComponent implements OnInit {
   movie: MovieListResult;
   genreNames: string[];
 
-  constructor(private MoviesAndSeriesService: MoviesAndSeriesService) { }
+  constructor() { }
 
   ngOnInit(): void {
     // Adding the basicUrl for images to the object poster_path property

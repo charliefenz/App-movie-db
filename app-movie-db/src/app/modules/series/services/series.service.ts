@@ -48,4 +48,8 @@ export class SeriesService {
     const codedSearch = encodeURI(query);
     return this.httpClient.get<ArraySeriesResponse>(`${EndPoints.searchSerie}&page=${page}&query=${codedSearch}`);
   }
+
+  getTrendingSeries(): Observable<ArraySeriesResponse> {
+    return this.httpClient.get<ArraySeriesResponse>(EndPoints.trendingSerie);
+  }
 }

@@ -13,4 +13,6 @@ export class EndPoints {
     public static serieGenres = `${GlobalConstants.basicUrl}genre/tv/list${GlobalConstants.apiKey}${GlobalConstants.langEs}`;
     public static searchSerie = `${GlobalConstants.basicUrl}search/tv${GlobalConstants.apiKey}${GlobalConstants.langEs}`;
     public static searchMovie = `${GlobalConstants.basicUrl}search/movie${GlobalConstants.apiKey}${GlobalConstants.langEs}`;
+    public static trendingMovie = `${GlobalConstants.basicUrl}trending/movie/week${GlobalConstants.apiKey}${GlobalConstants.langEs}`;
+    public static trendingSerie = `${GlobalConstants.basicUrl}trending/tv/week${GlobalConstants.apiKey}${GlobalConstants.langEs}`;
 }

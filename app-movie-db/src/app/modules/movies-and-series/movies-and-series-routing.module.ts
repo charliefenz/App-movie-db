@@ -3,16 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: MainComponent,
-    // FIXME
-    // Fix the way home loads components from movies and series
-    /* children: [
-      {path: '', loadChildren: () => import('../movies/movies.module').then((m) => m.MoviesModule)},
-      {path: '', loadChildren: () => import('../series/series.module').then((m) => m.SeriesModule)}
-    ] */
-  }
+  {path: '', component: MainComponent},
+  {path: 'movies', loadChildren: () => import('../../modules/movies/movies.module').then((m) => m.MoviesModule)},
+  {path: 'series', loadChildren: () => import('../../modules/series/series.module').then((m) => m.SeriesModule)}
 ];
 
 @NgModule({
