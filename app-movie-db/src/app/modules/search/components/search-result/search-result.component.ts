@@ -29,6 +29,7 @@ export class SearchResultComponent implements OnInit {
   getSearchResults(): void {
     this.searchReturn = [];
     let pagesToSearch: number;
+    //TODO Test how to sort the response by popularity
     const totalSeriesPages$ = this.seriesService.getSearchSeries(1, this.valueToSearch);
     const totalMoviesPages$ = this.moviesService.getSearchMovies(1, this.valueToSearch);
 
