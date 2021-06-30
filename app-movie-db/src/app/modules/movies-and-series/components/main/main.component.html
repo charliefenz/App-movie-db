@@ -1,17 +1,12 @@
 <h2>Películas de la semana</h2>
-<div class="container-fluid">
-    <div class="row" *ngIf="trendingMovies$ | async as trendingMovies">
-        <div class="col-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let movie of trendingMovies.results; let i=index">
-            <app-main-item *ngIf="i <= 5" [itemType]="'movie'" [movie]="movie"></app-main-item>
+    <div class="list-wrapper" *ngIf="trendingMovies$ | async as trendingMovies">
+        <div *ngFor="let movie of trendingMovies.results; let i=index">
+            <app-main-item *ngIf="i <= 10" [itemType]="'movie'" [movie]="movie"></app-main-item>
         </div>
     </div>
-</div>
 <h2>Series de la semana</h2>
-<div class="container-fluid">
-    <div class="row" *ngIf="trendingSeries$ | async as trendingSeries">
-        <div class="col-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let serie of trendingSeries.results; let i=index">
-            <app-main-item *ngIf="i <= 5" [itemType]="'serie'" [serie]="serie"></app-main-item>
+    <div class="list-wrapper" *ngIf="trendingSeries$ | async as trendingSeries">
+        <div *ngFor="let serie of trendingSeries.results; let i=index">
+            <app-main-item *ngIf="i <= 10" [itemType]="'serie'" [serie]="serie"></app-main-item>
         </div>
     </div>
-
-</div>

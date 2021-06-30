@@ -43,6 +43,7 @@ h2 {
 .item-card {
     margin: 15px;
     width: $item-width;
+    cursor: pointer;
 }
 
 .item-img-container, .episode-item-img-container {
@@ -95,8 +96,8 @@ h2 {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 350px;
-    background-position: center center;
+    height: 450px;
+    background-position: center 20%;
     background-repeat: no-repeat;
     background-size: cover;
     
@@ -104,6 +105,8 @@ h2 {
         height: 200px;
     }
 }
+
+// Veil effect to highlight the title
 .detail-backdrop::before{
     content: '';
     position: absolute;
@@ -165,10 +168,6 @@ h2 {
 
 .genre-list {
     margin: 20px 0;
-}
-.genre-chip {
-    background-color: $color-2nd;
-    color: white;
 }
 
 .detail-line {
