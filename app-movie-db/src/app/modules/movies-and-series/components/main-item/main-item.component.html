@@ -1,5 +1,4 @@
-<!-- TODO Improve the layout -->
-<div *ngIf="itemType === 'movie'">
+<div *ngIf="itemType === 'movie'" class="center">
     <mat-card class="item-card" routerLink="/movies/{{movie.id}}">
         <div class="item-img-container">
             <img src="{{imgUrl+movie.poster_path}}" alt="poster image of {{movie.title}}" class="item-poster-image">
@@ -9,7 +8,7 @@
         </mat-card-title>
     </mat-card>
 </div>
-<div *ngIf="itemType === 'serie'">
+<div *ngIf="itemType === 'serie'" class="center">
     <mat-card class="item-card" routerLink="/series/{{serie.id}}">
         <div class="item-img-container">
             <img src="{{imgUrl+serie.poster_path}}" alt="poster image of {{serie.name}}" class="item-poster-image">

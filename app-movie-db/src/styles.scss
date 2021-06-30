@@ -8,6 +8,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: white;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+}
+
 h2 {
     margin-bottom: 0px;
     color: $color-2nd;
