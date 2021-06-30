@@ -1,0 +1,62 @@
+<div *ngIf="serie$ | async as serie">
+    <div class="detail-backdrop" [style.backgroundImage]="backdropPath">
+        <div class="detail-title">
+            <h1 class="detail-title">{{serie.name}}</h1>
+            <h4>{{serie.original_name}}</h4>
+        </div>
+    </div>
+    <div class="detail-container">
+        <div class="detail-poster-path-container"> 
+            <img src="{{posterPath}}" alt="Poster de serie {{serie.name}}">
+        </div>
+        <div class="detail-info-container">
+            <!-- TODO Añadir funcionalidad para buscar por genero -->
+            <mat-chip-list class="genre-list">
+                <mat-chip class="genre-chip" *ngFor="let genre of serie.genres">{{genre.name}}</mat-chip>
+            </mat-chip-list>
+            <div class="detail-line network-list">
+                <span *ngFor="let network of networks">
+                    <img src="{{network.logo_path}}" alt="Logo de {{network.name}}">
+                </span>
+            </div>
+            <div class="detail-line">
+                <!-- TODO Convertir la codificación en Ansi en nombre de pais -->
+                <span class="detail-label">País: </span>
+                <span>{{serie.origin_country[0]}}</span>
+            </div>
+            <div class="detail-line">
+                <span class="detail-label">Reparto principal: </span>
+                <span *ngFor="let actor of cast; let i=index">
+                    <span *ngIf="i == 0">{{actor.name}}</span>
+                    <span *ngIf="i == 1">, {{actor.name}} </span>
+                    <span *ngIf="i == 2">y {{actor.name}}</span>
+                </span>
+            </div>
+            <div class="detail-line">
+                <span class="detail-label">Año: </span>
+                <span>{{serie.first_air_date | date: 'YYYY'}}</span>
+            </div>
+            <div class="detail-line">
+                <span class="detail-label">Valoración: </span>
+                <span>{{serie.vote_average}}</span>
+            </div>
+            <div class="detail-line">
+                <span class="detail-label">Temporadas: </span>
+                <span class="link" *ngFor="let season of serie.seasons">
+                    <span *ngIf="season.season_number == 1" (click)="listEpisodes(season)">T{{season.season_number}}</span>
+                    <span *ngIf="season.season_number > 1" (click)="listEpisodes(season)">  |  T{{season.season_number}}</span>
+                </span>
+            </div>
+            <div class="detail-line" *ngIf="hasWebPage">
+                <a class="link" href="{{serie.homepage}}" target="_blank">Sitio Web<mat-icon class="icon">open_in_new</mat-icon></a>
+            </div>
+            <div class="detail-overview-container">
+                <p>{{serie.overview}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="seasons-container" *ngIf="showEpisodes">
+        <app-episode-list [seasonNumber]="seasonInfo.seasonNumber" [serieId]="seasonInfo.serieId"></app-episode-list>
+    </div>   
+</div>
+

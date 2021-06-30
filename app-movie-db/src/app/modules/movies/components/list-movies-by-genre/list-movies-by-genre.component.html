@@ -1,0 +1,9 @@
+<h2>Por género</h2>
+<mat-form-field *ngIf="movieGenres$ | async as movieGenres">
+    <mat-select [(value)]="genreToDisplay">
+        <mat-option *ngFor="let genre of movieGenres.genres" value="{{genre.id}}">{{genre.name}}</mat-option>
+    </mat-select>
+</mat-form-field>
+<div *ngIf="genreToDisplay > 0">
+    <app-list-movies-by-genre-selector [genreToDisplay]="genreToDisplay"></app-list-movies-by-genre-selector>
+</div>

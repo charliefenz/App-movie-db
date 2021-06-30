@@ -1,0 +1,5 @@
+<h2>Más valoradas</h2>
+<div class="list-wrapper" *ngIf="topRatedMovies$ | async as topRatedMovies">
+    <app-movie-item *ngFor="let movie of topRatedMovies.results" [movie]="movie">
+    </app-movie-item>
+</div>

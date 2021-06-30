@@ -1,0 +1,9 @@
+<div class="search-bar-wrapper">
+    <mat-icon id="search-icon" class="color-white" *ngIf="!inputSearch" (click)="openSearch()">search</mat-icon>
+    <mat-form-field *ngIf="inputSearch" class="example-form-field">
+        <input ngModel name="searchInput" #searchInput="ngModel" id="search-input" matInput type="text" [(ngModel)]="valueToSearch" (keyup.enter)="search()">
+        <button matSuffix mat-icon-button aria-label="Clear" (click)="closeSearch()">
+            <mat-icon class="color-white">close</mat-icon>
+        </button>
+    </mat-form-field>
+</div>

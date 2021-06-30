@@ -1,0 +1,8 @@
+@import 'src/app/common/variables.scss';
+
+:host {
+    h2 {
+        display: inline-block;
+        margin: 20px 15px 0 15px;
+    }
+}

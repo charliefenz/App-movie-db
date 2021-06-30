@@ -1,0 +1,11 @@
+
+<mat-card class="episode-item-card">
+    <div class="episode-item-img-container">
+        <img class="episode-item-poster-image" src="{{episode.still_path}}" alt="">
+    </div>
+    <mat-card-title class="episode-item-title-container">
+        <h2 class="episode-item-subtitle">T{{episode.season_number}}.{{episode.episode_number}}</h2>
+        <p>{{episode.air_date | date: "dd/MM/YYYY"}}</p>
+        <h2 class="episode-item-title">{{episode.name}}</h2>
+    </mat-card-title>
+</mat-card>

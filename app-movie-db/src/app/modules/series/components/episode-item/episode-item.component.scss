@@ -1,0 +1,30 @@
+@import 'src/app/common/variables.scss';
+
+:host {
+    .episode-item-card {padding: 0;}
+
+    .episode-item-title-container {
+        padding: 10px;
+        * {
+            color: $pink;
+            margin: 0;
+        }
+        h2 {
+            line-height: 1.2em;
+            font-size: 0.7em; display: flex;
+            align-items: center;
+        }
+        .episode-item-title {
+            height: 72px;
+            font-weight: 400;
+            color: white;
+        }
+
+        p {
+            font-size: 0.5em;
+            font-weight: 100;
+            margin-bottom: 10px;
+        }
+    
+    }
+}

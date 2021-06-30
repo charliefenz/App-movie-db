@@ -1,0 +1,23 @@
+@import 'src/app/common/variables.scss';
+
+:host {
+    .item-card {padding: 0; white-space: normal;}
+
+    .item-title-container {
+        padding: 10px;
+        * {color: $pink; margin: 0;}
+        h2 {line-height: 1.2em; font-size: 0.5em; display: flex; align-items: center;}
+        .item-title {
+            height: 56px;
+            font-weight: 400;
+            color: white;
+        }
+
+        p {
+            font-size: 0.5em;
+            font-weight: 100;
+            margin-bottom: 10px;
+        }
+    
+    }
+}

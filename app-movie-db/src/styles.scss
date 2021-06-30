@@ -1,20 +1,222 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'src/app/common/variables.scss';
 
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
-
-html, body { height: 100%; width: 100vw; }
+html, body { height: 100%; max-width: 100vw; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-/* Color pallette */
-
-$space-cadet: #2B3A67 !global;
-$dark-electric: #496A81;
-$light-steel: #AEC5EB;
-$pink: #F9DEC9;
-$melon: #E9AFA3;
-$custom-gray: #485258;
-
 
 .color-white {
     color: white;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    margin-bottom: 0px;
+    color: $color-2nd;
+}
+
+.link {
+    cursor: pointer;
+    text-decoration: none;
+    color: $color-3rd;
+
+    &:focus {
+        color: $pink;
+    }
+}
+
+// TODO border-right effect for last element on width
+.list-wrapper {
+    display: flex;
+    overflow: auto;
+    white-space: nowrap;
+}  
+
+.item-card, .episode-item-card {
+    background-color: $color-2nd;
+    margin-bottom: 10px;
+}
+
+.item-card {
+    margin: 15px;
+    width: $item-width;
+}
+
+.item-img-container, .episode-item-img-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.item-poster-image, .episode-item-poster-image {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.item-poster-image {
+    width: 100%;
+    height: $item-width * 1.5;
+}
+
+.episode-item-poster-image {
+    width: $episode-item-img-width;
+    height: $episode-item-img-width / 1.7;
+}
+
+.item-title {
+    overflow: hidden;
+    color: white;
+}
+
+/* Aqui */
+.item-title-container {
+    padding: 10px;
+    * {color: $pink; margin: 0;}
+    h2 {line-height: 1.2em; font-size: 0.5em; display: flex; align-items: center;}
+    .item-title {
+        height: 56px;
+        font-weight: 400;
+        color: white;
+    }
+
+    p {
+        font-size: 0.5em;
+        font-weight: 100;
+        margin-bottom: 10px;
+    }
+
+}
+
+.detail-backdrop {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 350px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    @media screen and (max-width:$sm) {
+        height: 200px;
+    }
+}
+.detail-backdrop::before{
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: $color-3rd-opacity;
+}
+
+.detail-title {
+    position: relative;
+    padding: 0 10px;
+    
+    h1 {
+        font-size: 5vw;
+        text-align: center;
+        color: white;
+        line-height: 1;
+    }
+
+    h4 {
+        font-size: 2vw;
+        text-align: center;
+        color: $melon;
+    }
+}
+
+.detail-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.detail-poster-path-container {
+    width: 30%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        height: 90%;
+        border-radius: 5px;
+    }
+}
+
+.detail-info-container  {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
+.detail-overview-container {
+    padding: 10px 10px 0 0;
+}
+
+.genre-list {
+    margin: 20px 0;
+}
+.genre-chip {
+    background-color: $color-2nd;
+    color: white;
+}
+
+.detail-line {
+    font-size: 0.85em;
+
+    .detail-label, .icon {
+        color: $color-2nd;
+    }
+
+    .icon {
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: $xs) {
+    .detail-container {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detail-poster-path-container, .detail-info-container  {
+        width: 90%;
+    }
+
+    .detail-title {            
+        h1 {
+            font-size: 7.5vw;
+        }
+
+        h4 {
+            font-size: 3.5vw;
+        }
+    }
+}
+
+@media screen and (max-width: $sm) {
+    .detail-poster-path-container {
+        img {
+            height: 80%;
+        }
+    }
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline, .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: $color-2nd !important;
+}
+
+.mat-select-value, .mat-option {
+    color: $color-2nd !important;
 }

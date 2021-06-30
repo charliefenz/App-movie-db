@@ -1,0 +1,4 @@
+<div class="list-wrapper" *ngIf="seriesByGenre$ | async as seriesByGenre$">
+    <app-serie-item  *ngFor="let serie of seriesByGenre$.results" [serie]="serie">
+    </app-serie-item>
+</div>

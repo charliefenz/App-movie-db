@@ -1,0 +1,5 @@
+<h2>Más valoradas</h2>
+<div class="list-wrapper" *ngIf="topRatedSeries$ | async as topRatedSeries">
+    <app-serie-item *ngFor="let serie of topRatedSeries.results" [serie]="serie">
+    </app-serie-item>
+</div>

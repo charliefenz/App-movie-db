@@ -1,9 +1,10 @@
+@import 'src/app/common/variables.scss';
+
 :host {
-    $footer-height: 150px;
 
     .footer {
         height: $footer-height;
-        background-color: #485258;
+        background-color: $color-grey;
         display: flex;
         color: white;
         justify-content: center;

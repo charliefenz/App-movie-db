@@ -1,0 +1,6 @@
+@import 'src/app/common/variables.scss';
+
+:host {
+    .detail-line, h2 {margin-left: 12px;}
+    .episode-list {margin-top: 12px;}
+}
