@@ -1,7 +1,9 @@
+<!-- TODO Improve viewing, specially when opened and closed on mobile -->
 <div class="search-bar-wrapper">
     <mat-icon id="search-icon" class="color-white" *ngIf="!inputSearch" (click)="openSearch()">search</mat-icon>
     <mat-form-field *ngIf="inputSearch" class="example-form-field" floatLabel="never">
         <input ngModel name="searchInput" #searchInput="ngModel" id="search-input" matInput type="text" [(ngModel)]="valueToSearch" (keyup.enter)="search()" autocomplete="off">
+        <!-- TODO add function on keyup.escape to closeSearch -->
         <button matSuffix mat-icon-button aria-label="Clear" (click)="closeSearch()">
             <mat-icon class="color-white">close</mat-icon>
         </button>
