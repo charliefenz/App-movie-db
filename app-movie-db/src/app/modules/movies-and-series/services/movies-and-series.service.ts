@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CountriesApi } from 'src/app/common/classes/countries-api-endpoints';
+import { Country } from 'src/app/common/models/countries';
 
 @Injectable({
   providedIn: 'root'
@@ -8,23 +11,8 @@ export class MoviesAndSeriesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  /* FIXME see if this can be useful */
-  /* getGenresById(ids: number[]): string[] {
-    const genres$ = this.getGenres();
-    const result: string[] = [];
-    ids.forEach((idElement) => {
-      genres$.subscribe((res) => {
-        const found = res.genres.find((element) => element.id === idElement);
-        result.push(found.name);
-      });
-    });
-    return result;
+  getCountryName(countryCode: string): Observable<Country> {
+    countryCode = countryCode.toLowerCase();
+    return this.httpClient.get<Country>(`${CountriesApi.basicUrl}${countryCode}`);
   }
-
-  private getGenres(): Observable<GenresResponse> {
-    return this.httpClient.get<GenresResponse>(EndPoints.genres);
-  } */
-
-
-
 }
