@@ -11,6 +11,7 @@ import { SearchBarComponent } from './components/layout/search-bar/search-bar.co
 import { FormsModule } from '@angular/forms';
 import { SearchResultComponent } from './modules/search/components/search-result/search-result.component';
 import { SearchItemComponent } from './modules/search/components/search-item/search-item.component';
+import { FocusDirective } from './directives/focus.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SearchItemComponent } from './modules/search/components/search-item/sea
     FooterComponent,
     SearchBarComponent,
     SearchResultComponent,
-    SearchItemComponent
+    SearchItemComponent,
+    FocusDirective
   ],
   imports: [
     BrowserModule,
