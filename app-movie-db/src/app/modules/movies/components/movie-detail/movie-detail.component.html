@@ -10,7 +10,6 @@
             <img src="{{posterPath}}" alt="Poster de movie {{movie.title}}">
         </div>
         <div class="detail-info-container">
-            <!-- TODO Add functionality to search similar listings by category -->
             <mat-chip-list class="genre-list">
                 <mat-chip class="genre-chip" *ngFor="let genre of movie.genres">{{genre.name}}</mat-chip>
             </mat-chip-list>
