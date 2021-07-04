@@ -12,9 +12,11 @@ import { SeriesService } from 'src/app/modules/series/services/series.service';
 })
 export class SearchResultComponent implements OnInit {
 
+  /* TODO Create view when totalPages == 0 */
   valueToSearch: string;
   searchTotalPages = 2;
   searchReturn: SearchReturn[];
+  existingReturn = true;
 
   constructor(private seriesService: SeriesService, private moviesService: MoviesService, private route: ActivatedRoute) { }
 
@@ -35,38 +37,43 @@ export class SearchResultComponent implements OnInit {
 
     // First subscription to check the max length of the returned array
     totalSeriesPages$.subscribe((restotalSeriesPages) => {
-      // If statement to limit the number of pages to be shown
-      if (this.searchTotalPages <= restotalSeriesPages.total_pages) {
-        pagesToSearch = this.searchTotalPages;
+      // If statement to limit the number of pages to be shown     
+      if (restotalSeriesPages.total_pages === 0) {
+        this.existingReturn = false;
       } else {
-        pagesToSearch = restotalSeriesPages.total_pages;
-      }
-      // Loop of subscriptions to the API to firstly get the series response for each API page
-      for (let i = 1; i <= pagesToSearch; i++) {
-        const seriesSearch$ = this.seriesService.getSearchSeries(i, this.valueToSearch);
-        seriesSearch$.subscribe((resSeriesSearch) => {
-          const searchSeriesResults = this.createSearchReturnArray(resSeriesSearch.results, 'tv');
-          this.searchReturn = this.searchReturn.concat(searchSeriesResults); // Extracting the results to the local component array
-          // If statement to instruct to go for the mmovies response once it has finished with the series response
-          if (i === pagesToSearch) {
-            // First subscription to check the max length of the returned array
-            totalMoviesPages$.subscribe((restotalMoviesPages) => {
-              if (this.searchTotalPages <= restotalMoviesPages.total_pages) {
-                pagesToSearch = this.searchTotalPages;
-              } else {
-                pagesToSearch = restotalMoviesPages.total_pages;
-              }
-              // 2nd Loop of subscriptions to the API to get the movies response for each API page
-              for (let j = 1; j <= pagesToSearch; j++) {
-                const MoviesSearch$ = this.moviesService.getSearchMovies(i, this.valueToSearch);
-                MoviesSearch$.subscribe((resMoviesSearch) => {
-                  const searchMoviesResults = this.createSearchReturnArray(resMoviesSearch.results, 'movie');
-                  this.searchReturn = this.searchReturn.concat(searchMoviesResults); // Adding the results to the local component array
-                });
-              }
-            });
-          }
-        });
+        this.existingReturn = true;
+        if (this.searchTotalPages <= restotalSeriesPages.total_pages) {
+          pagesToSearch = this.searchTotalPages;
+        } else {
+          pagesToSearch = restotalSeriesPages.total_pages;
+        }
+        // Loop of subscriptions to the API to firstly get the series response for each API page
+        for (let i = 1; i <= pagesToSearch; i++) {
+          const seriesSearch$ = this.seriesService.getSearchSeries(i, this.valueToSearch);
+          seriesSearch$.subscribe((resSeriesSearch) => {
+            const searchSeriesResults = this.createSearchReturnArray(resSeriesSearch.results, 'tv');
+            this.searchReturn = this.searchReturn.concat(searchSeriesResults); // Extracting the results to the local component array
+            // If statement to instruct to go for the mmovies response once it has finished with the series response
+            if (i === pagesToSearch) {
+              // First subscription to check the max length of the returned array
+              totalMoviesPages$.subscribe((restotalMoviesPages) => {
+                if (this.searchTotalPages <= restotalMoviesPages.total_pages) {
+                  pagesToSearch = this.searchTotalPages;
+                } else {
+                  pagesToSearch = restotalMoviesPages.total_pages;
+                }
+                // 2nd Loop of subscriptions to the API to get the movies response for each API page
+                for (let j = 1; j <= pagesToSearch; j++) {
+                  const MoviesSearch$ = this.moviesService.getSearchMovies(i, this.valueToSearch);
+                  MoviesSearch$.subscribe((resMoviesSearch) => {
+                    const searchMoviesResults = this.createSearchReturnArray(resMoviesSearch.results, 'movie');
+                    this.searchReturn = this.searchReturn.concat(searchMoviesResults); // Adding the results to the local component array
+                  });
+                }
+              });
+            }          
+          });
+        }
       }
     });
   }

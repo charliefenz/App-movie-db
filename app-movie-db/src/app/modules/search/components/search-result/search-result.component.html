@@ -1,8 +1,11 @@
 <!-- TODO Adjust breakpoints and center the app-search-items on col-12 viewport -->
-<div class="episode-list container-fluid">
+<div class="episode-list container-fluid" *ngIf="existingReturn">
     <div class="row">
-        <div class="col-12 col-sm-4 col-md-3 col-lg-2" *ngFor="let searchItem of searchReturn">
+        <div class="col-12 col-sm-4 col-md-3 col-xl-2" *ngFor="let searchItem of searchReturn">
             <app-search-item [searchItem]="searchItem"></app-search-item>
         </div>
     </div>
+</div>
+<div *ngIf="!existingReturn" class="no-return">
+    <p>No se han encontrado resultados, por favor inténtalo de nuevo...</p>
 </div>
