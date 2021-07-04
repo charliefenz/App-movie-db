@@ -12,7 +12,6 @@ import { SeriesService } from 'src/app/modules/series/services/series.service';
 })
 export class SearchResultComponent implements OnInit {
 
-  /* TODO Create view when totalPages == 0 */
   valueToSearch: string;
   searchTotalPages = 2;
   searchReturn: SearchReturn[];
