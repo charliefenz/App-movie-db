@@ -7,10 +7,8 @@ import { MoviesService } from '../../services/movies.service';
   templateUrl: './list-popular-movies.component.html',
   styleUrls: ['./list-popular-movies.component.scss']
 })
-export class ListPopularMoviesComponent implements OnInit {
 
-  // TODO Limit initial load to viewport width
-/* Maybe with a formula that detects vw, divides by fixed px of element and indicates the array how many items should show, then with a clickable "view more" should expand the list */
+export class ListPopularMoviesComponent implements OnInit {
 
   popularMovies: MovieListResult[];
 

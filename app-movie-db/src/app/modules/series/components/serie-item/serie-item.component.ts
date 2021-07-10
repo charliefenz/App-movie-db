@@ -18,7 +18,11 @@ export class SerieItemComponent implements OnInit {
 
   ngOnInit(): void {
     // Adding the basicUrl for images to the object backdrop_path property
-    this.serie.poster_path = GlobalConstants.imagesPosterUrl + this.serie.poster_path;
+    if (this.serie.poster_path !== null) {
+      this.serie.poster_path = GlobalConstants.imagesPosterUrl + this.serie.poster_path;
+    } else {
+      this.serie.poster_path = '../../../assets/images/no-image.png';
+    }
     const stringId = this.serie.id.toString();
     const serie$ = this.seriesService.getSerie(stringId);
     serie$.subscribe((res) => this.mainNetwork = res.networks[0].name);

@@ -1,3 +1,4 @@
+import { Genre } from 'src/app/common/models/genre';
 import { Network } from './networks';
 import { Season } from './seasons';
 
@@ -7,12 +8,6 @@ interface CreatedBy {
     name: string;
     gender: number;
     profile_path: string;
-}
-
-// TODO. Export to a common interface bcz movie uses it too
-interface Genre {
-    id: number;
-    name: string;
 }
 
 interface LastEpisodeToAir {

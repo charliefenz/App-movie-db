@@ -1,0 +1,8 @@
+@import 'src/app/common/variables.scss';
+
+:host {
+    .genre-chip {
+        background-color: $color-2nd;
+        color: white;
+    }
+}

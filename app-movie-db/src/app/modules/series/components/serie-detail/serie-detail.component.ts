@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GlobalConstants } from 'src/app/common/classes/global-constants';
+import { MoviesAndSeriesService } from 'src/app/modules/movies-and-series/services/movies-and-series.service';
 import { Network } from '../../models/networks';
 import { Season } from '../../models/seasons';
 import { SeriesCast } from '../../models/serie-cast';
@@ -23,8 +24,9 @@ export class SerieDetailComponent implements OnInit {
   hasWebPage = false;
   showEpisodes = false;
   seasonInfo = {serieId: 0, seasonNumber: 0};
+  countryNameEsp: string;
 
-  constructor(private route: ActivatedRoute, private seriesService: SeriesService) { }
+  constructor(private route: ActivatedRoute, private seriesService: SeriesService, private generalService: MoviesAndSeriesService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -46,6 +48,9 @@ export class SerieDetailComponent implements OnInit {
         this.hasWebPage = true;
       }
       this.getCredits(res.id);
+      // Get Country full name
+      const countryNameEsp$ = this.generalService.getCountryName(res.origin_country[0]);
+      countryNameEsp$.subscribe((countryRes) => this.countryNameEsp = countryRes.translations.es);
     });
   }
 

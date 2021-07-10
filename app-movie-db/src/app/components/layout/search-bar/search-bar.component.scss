@@ -1,0 +1,14 @@
+:host {
+    input {
+        caret-color: white;
+        color: white;
+    }
+
+    #search-icon, button {
+        cursor: pointer;
+    }
+
+    #search-icon {
+        text-align: center;
+    }
+}
