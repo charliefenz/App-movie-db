@@ -38,7 +38,7 @@ El resultado de la búsqueda se muestra siguiendo los mismos lineamientos de los
 Si la query no devuelve ningún resultado, se muestra un mensaje al usuario para que realice otra búsqueda.
 #### Limitaciones de search en la API
 La API utiliza sus propios algoritmos para mostrar los resultados mas importantes de primero y no permite que se le pasen parámetros de filtrado mas allá que la propia query.
-También es común encontrar resultados sin imagenes de poster. En el caso último, se ha decidido conservar la respuesta sin filtrar para que no se muestren los resultados sin imagen y se ha insertado una lógica para que, llegado el caso, se muestre una imagen local que indique que el item no posee imagen.
+También es común encontrar resultados sin imagenes de poster. En el caso último, se ha decidido conservar la respuesta sin filtrar para que se muestren los resultados sin imagen y se ha insertado una lógica para que, llegado el caso, se muestre una imagen local que indique que el item no posee imagen.
 ## Modulado
 Se utilizó un approach modular para que la apliación cargue siempre los componentes de layout principales, que son integrantes de la carpeta /app/components y que corresponden al header, footer y serch-bar. El resto de componentes se cargan bajo pedido y se han agrupado en 4 módulos:
 1. **Movies-and-series**. Controla todo lo referente a vistas en que se tengan que combinar películas y series, y aloja el servicio encargado de traducir los paises que la API principal devuelve codificados.
@@ -48,18 +48,6 @@ Se utilizó un approach modular para que la apliación cargue siempre los compon
 ### Lógica de rutas de carga
 Como los componentes de layout siempre son cargados, los **routerLink** de cada elemento del menú están diseñados para hacer un lazy load de cada modulo al cual corresponda. En particular, el elemento search dentro del header, es un mero comunicador, es decir, se encarga de recoger la query que el usuario coloca y la envia al módulo de search dentro del **queryParams** del metodo **navigate** de router.
 Cuando la aplicación carga en el inicio se carga el módulo **movies-and-series**, cuyo componente principal muestra los listados de peliculas y series. Desde ahí, dependiendo del elemento seleccionado por el usuario, este llama al módulo **movies** o **series**.
-### Elementos generales
-Se ha estructurado de forma que existan entidades generales que caben dentro del contexto de aprovechamiento de cualquier elemento o módulo de la aplicación.
-#### Clases
-Como hay muchos pedidos a la API, se han creado tres clases con el objetivo de centralizar la construcción de las url de petición.
-* countries-api-endpoints. Contiene la url para hacer los pedidos a la API de [restcountries.eu](https://restcountries.eu/#api-endpoints-code).
-* endpoints. Contiene las distintas estructuras para formar las URL de los pedidos a la API de [themoviedb.org](https://www.themoviedb.org/documentation/api).
-* global-constants. Guarda variables para hacer más fácil la construcción de URLs en cualquier parte de la aplicación.
-#### Modelos
-* array-genres-response.
-* countries
-* crew
-* genre
 ### Movies-and-series
 #### Componentes
 * Main. Se encarga de estructurar la página principal.
@@ -106,4 +94,19 @@ Como hay muchos pedidos a la API, se han creado tres clases con el objetivo de c
 * search-result. Se encarga de estructurar la página que muestra los resultados.
 #### Modelos
 * search-return
+## Elementos generales
+Se ha estructurado de forma que existan entidades generales que caben dentro del contexto de aprovechamiento de cualquier elemento o módulo de la aplicación. Se encuentran dentro de la carpeta *common*.
+### Clases
+Como hay muchos pedidos a la API, se han creado tres clases con el objetivo de centralizar la construcción de las url de petición.
+* countries-api-endpoints. Contiene la url para hacer los pedidos a la API de [restcountries.eu](https://restcountries.eu/#api-endpoints-code).
+* endpoints. Contiene las distintas estructuras para formar las URL de los pedidos a la API de [themoviedb.org](https://www.themoviedb.org/documentation/api).
+* global-constants. Guarda variables para hacer más fácil la construcción de URLs en cualquier parte de la aplicación.
+### Modelos
+* array-genres-response.
+* countries
+* crew
+* genre
+### Estilos
+Un archivo de variables generales que se importa en los archivos locales de los componentes que lo necesiten. Contiene variables esenciales como la paleta de colores, los breakpoints de bootstrap, el ancho de los items, etc.
+
 
