@@ -1,4 +1,4 @@
-# final-project. App-movie-db
+# App-movie-db
 Ejemplo de una app que contiene una base de datos de películas y series. Permite al usuario encontrar tanto unas como otras, por categorías y con palabras clave a través de un buscador en la cabecera. La lógica se maneja desde cuatro módulos principales: **movies**, **series**, **movies-and-series** y **search**, cada uno con sus componentes, rutas, servicios y modelos. La información se obtiene a través de APIs. La principal: [themoviedb.org](https://www.themoviedb.org/documentation/api) que proporciona toda la información necesaria y una API adicional: [restcountries.eu](https://restcountries.eu/#api-endpoints-code) para la obtención de los nombres de los países.
 ## Tecnologías utilizadas
 * Angular para el desarrollo de la aplicacion.
