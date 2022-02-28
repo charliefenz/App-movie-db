@@ -27,6 +27,7 @@ export class SearchResultComponent implements OnInit {
     });
   }
 
+  //TODO: This needs to be clearer
   getSearchResults(): void {
     this.searchReturn = [];
     let pagesToSearch: number;
