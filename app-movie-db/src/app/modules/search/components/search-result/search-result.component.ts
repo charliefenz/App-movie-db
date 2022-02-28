@@ -20,11 +20,14 @@ export class SearchResultComponent implements OnInit {
   constructor(private seriesService: SeriesService, private moviesService: MoviesService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((res) => {
-      const routeParams = res;
+    this.getValueFromRoute();
+    this.getSearchResults();
+  }
+
+  getValueFromRoute(): void {
+    this.route.queryParams.subscribe((routeParams) => {
       this.valueToSearch = routeParams.query;
-      this.getSearchResults();
-    });
+    })
   }
 
   //TODO: This needs to be clearer
