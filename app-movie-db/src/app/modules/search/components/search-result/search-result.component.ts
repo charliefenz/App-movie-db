@@ -4,6 +4,9 @@ import { GlobalConstants } from 'src/app/common/classes/global-constants';
 import { SearchReturn } from 'src/app/modules/search/models/search-return';
 import { MoviesService } from 'src/app/modules/movies/services/movies.service';
 import { SeriesService } from 'src/app/modules/series/services/series.service';
+import { ArraySearchResponse } from '../../models/array-search-response';
+import { Observable } from 'rxjs';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search-result',
@@ -17,39 +20,51 @@ export class SearchResultComponent implements OnInit {
   searchReturn: SearchReturn[];
   existingReturn = true;
 
-  constructor(private seriesService: SeriesService, private moviesService: MoviesService, private route: ActivatedRoute) { }
+  constructor(private seriesService: SeriesService, private moviesService: MoviesService, private searchService: SearchService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getValueFromRoute();
-    this.getSearchResults();
+    this.checkValidResponse();
+    if (this.existingReturn) {
+
+    }
+    
   }
 
   getValueFromRoute(): void {
     this.route.queryParams.subscribe((routeParams) => {
       this.valueToSearch = routeParams.query;
-    })
+    });
   }
 
-  //TODO: This needs to be clearer
-  getSearchResults(): void {
-    this.searchReturn = [];
-    let pagesToSearch: number;
-    //TODO Test how to sort the response by popularity
-    const totalSeriesPages$ = this.seriesService.getSearchSeries(1, this.valueToSearch);
-    const totalMoviesPages$ = this.moviesService.getSearchMovies(1, this.valueToSearch);
-
-    // First subscription to check the max length of the returned array
-    totalSeriesPages$.subscribe((restotalSeriesPages) => {
-      // If statement to limit the number of pages to be shown     
-      if (restotalSeriesPages.total_pages === 0) {
+  checkValidResponse(): void {
+    const searchResponse$ = this.searchService.getSearchResults(this.valueToSearch, '1');
+    searchResponse$.subscribe((res) => {
+      if (res.total_results === 0) {
         this.existingReturn = false;
       } else {
         this.existingReturn = true;
-        if (this.searchTotalPages <= restotalSeriesPages.total_pages) {
-          pagesToSearch = this.searchTotalPages;
-        } else {
-          pagesToSearch = restotalSeriesPages.total_pages;
-        }
+      }
+    });
+  }
+
+  //TODO: This needs to be clearer
+  
+  getSearchResults(): void {
+    this.searchReturn = [];
+    let pagesToSearch: number;
+
+    //TODO Test how to sort the response by popularity
+
+
+    const totalSeriesPages$ = this.seriesService.getSearchSeries(1, this.valueToSearch);
+    const totalMoviesPages$ = this.moviesService.getSearchMovies(1, this.valueToSearch);
+
+        // if (this.searchTotalPages <= restotalSeriesPages.total_pages) {
+        //   pagesToSearch = this.searchTotalPages;
+        // } else {
+        //   pagesToSearch = restotalSeriesPages.total_pages;
+        // }
         // Loop of subscriptions to the API to firstly get the series response for each API page
         for (let i = 1; i <= pagesToSearch; i++) {
           const seriesSearch$ = this.seriesService.getSearchSeries(i, this.valueToSearch);
@@ -77,8 +92,6 @@ export class SearchResultComponent implements OnInit {
             }          
           });
         }
-      }
-    });
   }
 
   private createSearchReturnArray(resArray: any, inputType: string): SearchReturn[] {
