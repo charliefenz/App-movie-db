@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SearchReturn } from 'src/app/modules/search/models/search-return';
+import { GlobalConstants } from 'src/app/common/classes/global-constants';
+import { SearchResponse } from '../../models/search-response';
 
 @Component({
   selector: 'app-search-item',
@@ -10,7 +11,7 @@ import { SearchReturn } from 'src/app/modules/search/models/search-return';
 export class SearchItemComponent implements OnInit {
 
   @Input()
-  searchItem: SearchReturn;
+  searchItem: SearchResponse;
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
