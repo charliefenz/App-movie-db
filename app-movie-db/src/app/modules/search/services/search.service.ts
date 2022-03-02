@@ -16,7 +16,8 @@ export class SearchService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getSearchResults(query: string, page: string): Observable<ArraySearchResponse> {
-    return this.httpClient.get<ArraySearchResponse>(`${EndPoints.multiSearch}&query=${query}&page=${page}`);
+  getSearchResults(query: string, pageNumber: string): Observable<SearchResponseObject> {
+    return this.httpClient.get<SearchResponseObject>(`${EndPoints.multiSearch}&query=${query}&page=${pageNumber}`);
+  }
   }
 }
