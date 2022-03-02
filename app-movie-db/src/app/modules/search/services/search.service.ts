@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EndPoints } from 'src/app/common/classes/endpoints';
-import { ArraySearchResponse } from '../models/array-search-response';
+import { SearchResponseObject } from '../models/search-response-object';
 
 @Injectable({
   providedIn: 'root'
