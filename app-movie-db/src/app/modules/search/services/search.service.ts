@@ -19,5 +19,9 @@ export class SearchService {
   getSearchResults(query: string, pageNumber: string): Observable<SearchResponseObject> {
     return this.httpClient.get<SearchResponseObject>(`${EndPoints.multiSearch}&query=${query}&page=${pageNumber}`);
   }
+
+  informCompleteReception(): void {
+    console.log('service informed of completed petition');
+    this._changeDetection.next(++this._detector);
   }
 }
