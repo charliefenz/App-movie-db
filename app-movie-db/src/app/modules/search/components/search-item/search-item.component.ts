@@ -16,14 +16,20 @@ export class SearchItemComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    if (this.searchItem.poster_path !== null) {
+      this.searchItem.poster_path = GlobalConstants.imagesPosterUrl + this.searchItem.poster_path;
+    } else {
+      this.searchItem.poster_path = '../../../assets/images/no-image.png';
+    }
   }
 
+  // Todo: Check this is necessary
   goTo(type: string, id: number): void {
     if (type !== 'tv') {
       this.router.navigate([`movies/${id}`], {relativeTo: this.route});
     } else {
       this.router.navigate(['series'], {relativeTo: this.route});
     }
-    }
+  }
 
 }
