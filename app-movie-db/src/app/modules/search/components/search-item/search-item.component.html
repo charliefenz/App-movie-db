@@ -1,21 +1,20 @@
-<mat-card class="item-card" *ngIf="searchItem.type !== 'tv'" routerLink="/movies/{{searchItem.id}}">
-    <div class="item-img-container">
-        <img src="{{searchItem.poster_path}}" alt="poster image of {{searchItem.nameOrTitle}}" class="item-poster-image">
-    </div>
-    <mat-card-title class="item-title-container">
-        <h2 class="item-title">{{searchItem.nameOrTitle}}</h2>
-        <p *ngIf="searchItem.type === 'tv'">Serie</p>
-        <p *ngIf="searchItem.type !== 'tv'">Peli</p>
-    </mat-card-title>
-</mat-card>
-<mat-card class="item-card" *ngIf="searchItem.type === 'tv'" routerLink="/series/{{searchItem.id}}">
-    <div class="item-img-container">
-        <img src="{{searchItem.poster_path}}" alt="poster image of {{searchItem.nameOrTitle}}" class="item-poster-image">
-    </div>
-    <mat-card-title class="item-title-container">
-        <h2 class="item-title">{{searchItem.nameOrTitle}}</h2>
-        <p *ngIf="searchItem.type === 'tv'">Serie</p>
-        <p *ngIf="searchItem.type !== 'tv'">Peli</p>
-    </mat-card-title>
-</mat-card>
-
+<div [ngSwitch]="searchItem.media_type">
+    <mat-card class="item-card" *ngSwitchCase="'tv'" routerLink="/series/{{searchItem.id}}">
+        <div class="item-img-container">
+            <img src="{{searchItem.poster_path}}" alt="poster image of {{searchItem.name}}" class="item-poster-image">
+        </div>
+        <mat-card-title class="item-title-container">
+            <h2 class="item-title">{{searchItem.name}}</h2>
+            <p>Serie</p>
+        </mat-card-title>
+    </mat-card>
+    <mat-card class="item-card" *ngSwitchCase="'movie'" routerLink="/movies/{{searchItem.id}}">
+        <div class="item-img-container">
+            <img src="{{searchItem.poster_path}}" alt="poster image of {{searchItem.title}}" class="item-poster-image">
+        </div>
+        <mat-card-title class="item-title-container">
+            <h2 class="item-title">{{searchItem.title}}</h2>
+            <p>Peli</p>
+        </mat-card-title>
+    </mat-card>
+</div>
