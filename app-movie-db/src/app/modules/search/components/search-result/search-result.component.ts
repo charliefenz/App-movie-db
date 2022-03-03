@@ -27,18 +27,15 @@ export class SearchResultComponent implements OnInit {
   constructor(private searchService: SearchService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getValueFromRoute();
-    this.checkValidResponse();
-    if (this.existingReturn) {
-
-    }
-    
-  }
-
-  getValueFromRoute(): void {
-    this.route.queryParams.subscribe((routeParams) => {
-      this.valueToSearch = routeParams.query;
+    this.searchService.changeDetection.subscribe((change) => {
+      if (change > 0 && this.searchResponseObjectTotalItems > 0) {
+        if (this.searchResponseCleanedLength < this.searchResponseIdealLength && this.rawSearchResponseLength < this.searchResponseObjectTotalItems) {
+          this.searchPage++;
+          this.getExtraSearchResults(this.searchPage);
+        }
+      }
     });
+    this.getSearchResults(this.searchPage);
   }
 
   getSearchResults(searchPage: number): void {
@@ -61,16 +58,6 @@ export class SearchResultComponent implements OnInit {
     });
   }
 
-  getExtraSearchResults(searchPage: number): void {
-    this.searchService.getSearchResults(this.valueToSearch, searchPage.toString())
-    .subscribe((subsequentSearchResponseObject) => {
-      this.rawSearchResponseLength += subsequentSearchResponseObject.results.length;
-      this.searchResponseCleaned.push(...this.removePersonsFromSearchResult(subsequentSearchResponseObject.results));
-      this.searchResponseCleanedLength = this.searchResponseCleaned.length;
-      this.searchService.informCompleteReception();
-    });
-  }
-
   fillProperties(searchResponseObject: SearchResponseObject): void {
     this.rawSearchResponseLength = searchResponseObject.results.length;
     this.searchResponseCleaned = this.removePersonsFromSearchResult(searchResponseObject.results);
@@ -79,5 +66,15 @@ export class SearchResultComponent implements OnInit {
 
   removePersonsFromSearchResult(rawSearchResponse: SearchResponse[]): SearchResponse[] {
     return rawSearchResponse.filter(searchItem => searchItem.media_type !== this.mediaTypePerson);
+  }
+
+  getExtraSearchResults(searchPage: number): void {
+    this.searchService.getSearchResults(this.valueToSearch, searchPage.toString())
+    .subscribe((subsequentSearchResponseObject) => {
+      this.rawSearchResponseLength += subsequentSearchResponseObject.results.length;
+      this.searchResponseCleaned.push(...this.removePersonsFromSearchResult(subsequentSearchResponseObject.results));
+      this.searchResponseCleanedLength = this.searchResponseCleaned.length;
+      this.searchService.informCompleteReception();
+    });
   }
 }
