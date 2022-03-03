@@ -9,8 +9,6 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarComponent } from './components/layout/search-bar/search-bar.component';
 import { FormsModule } from '@angular/forms';
-import { SearchResultComponent } from './modules/search/components/search-result/search-result.component';
-import { SearchItemComponent } from './modules/search/components/search-item/search-item.component';
 import { FocusDirective } from './directives/focus.directive';
 
 @NgModule({
@@ -19,8 +17,6 @@ import { FocusDirective } from './directives/focus.directive';
     HeaderComponent,
     FooterComponent,
     SearchBarComponent,
-    SearchResultComponent,
-    SearchItemComponent,
     FocusDirective
   ],
   imports: [
