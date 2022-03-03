@@ -10,13 +10,20 @@ import { SearchResponseObject } from '../../models/search-response-object';
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.scss']
 })
+
 export class SearchResultComponent implements OnInit {
 
   valueToSearch: string;
-  searchTotalPages = 2;
-  searchReturn: SearchReturn[];
+  searchPage = 1;
+  searchResponse: SearchResponse[];
+  searchResponseIdealLength = 10;
   existingReturn = true;
-
+  mediaTypePerson = 'person';
+  rawSearchResponseLength: number;
+  searchResponseCleaned: SearchResponse[];
+  searchResponseCleanedLength: number;
+  searchResponseObjectTotalItems: number;
+  
   constructor(private searchService: SearchService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
