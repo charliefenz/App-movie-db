@@ -17,7 +17,7 @@ export class SearchResultComponent implements OnInit {
   searchReturn: SearchReturn[];
   existingReturn = true;
 
-  constructor(private seriesService: SeriesService, private moviesService: MoviesService, private searchService: SearchService, private route: ActivatedRoute) { }
+  constructor(private searchService: SearchService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getValueFromRoute();
