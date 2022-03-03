@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchBarComponent } from './components/layout/search-bar/search-bar.component';
 import { FormsModule } from '@angular/forms';
 import { FocusDirective } from './directives/focus.directive';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FocusDirective } from './directives/focus.directive';
     HeaderComponent,
     FooterComponent,
     SearchBarComponent,
-    FocusDirective
+    FocusDirective,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
