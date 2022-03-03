@@ -61,6 +61,16 @@ export class SearchResultComponent implements OnInit {
     });
   }
 
+  getExtraSearchResults(searchPage: number): void {
+    this.searchService.getSearchResults(this.valueToSearch, searchPage.toString())
+    .subscribe((subsequentSearchResponseObject) => {
+      this.rawSearchResponseLength += subsequentSearchResponseObject.results.length;
+      this.searchResponseCleaned.push(...this.removePersonsFromSearchResult(subsequentSearchResponseObject.results));
+      this.searchResponseCleanedLength = this.searchResponseCleaned.length;
+      this.searchService.informCompleteReception();
+    });
+  }
+
   fillProperties(searchResponseObject: SearchResponseObject): void {
     this.rawSearchResponseLength = searchResponseObject.results.length;
     this.searchResponseCleaned = this.removePersonsFromSearchResult(searchResponseObject.results);
