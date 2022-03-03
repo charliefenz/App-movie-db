@@ -24,4 +24,6 @@ export class SearchService {
     console.log('service informed of completed petition');
     this._changeDetection.next(++this._detector);
   }
+
+  //TODO: Create error handling mechanism for http
 }
