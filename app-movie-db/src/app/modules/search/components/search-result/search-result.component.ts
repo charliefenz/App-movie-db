@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GlobalConstants } from 'src/app/common/classes/global-constants';
-import { SearchReturn } from 'src/app/modules/search/models/search-return';
-import { MoviesService } from 'src/app/modules/movies/services/movies.service';
-import { SeriesService } from 'src/app/modules/series/services/series.service';
-import { ArraySearchResponse } from '../../models/array-search-response';
-import { Observable } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 import { SearchService } from '../../services/search.service';
+import { SearchResponse } from '../../models/search-response';
+import { SearchResponseObject } from '../../models/search-response-object';
 
 @Component({
   selector: 'app-search-result',
