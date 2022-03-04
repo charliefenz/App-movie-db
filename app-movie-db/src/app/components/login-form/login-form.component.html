@@ -1,11 +1,19 @@
-<form [formGroup]="loginForm" (submit)="onSubmit(loginForm)">
+<form [formGroup]="loginForm" (submit)="onSubmit()">
     <div class="form-group">
         <label for="loginEmail">Email:</label>
-        <input type="email" name="loginEmail" id="loginEmail" class="formControl" formControlName="email">
+        <input type="email" name="loginEmail" id="loginEmail" class="formControl" formControlName="email" (click)="showValidationErrors = false">
+        <div class="errors" *ngIf="showValidationErrors">
+            <div *ngIf="emailControl.errors?.required">Tienes que introducir tu correo electrónico</div>
+            <div *ngIf="emailControl.errors?.email">Formato de correo electrónico no válido</div>
+        </div>        
     </div>
     <div class="form-group">
         <label for="loginPassword">Contraseña:</label>
-        <input type="password" name="loginPassword" id="loginPassword" class="formControl" formControlName="password">
+        <input type="password" name="loginPassword" id="loginPassword" class="formControl" formControlName="password" (click)="showValidationErrors = false">
+        <div class="errors" *ngIf="showValidationErrors">
+            <div *ngIf="passwordControl.errors?.required">Tienes que introducir tu contraseña</div>
+            <div *ngIf="passwordControl.errors?.minlength">Contraseña incompleta</div>
+        </div>    
     </div>
     <button type="submit">Entrar</button>
 </form>
