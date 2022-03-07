@@ -11,6 +11,7 @@ import { ListSeriesByGenreComponent } from './components/list-series-by-genre/li
 import { SeriesMainPageComponent } from './components/series-main-page/series-main-page.component';
 import { ListTopRatedSeriesComponent } from './components/list-top-rated-series/list-top-rated-series.component';
 import { ListSeriesByGenreSelectorComponent } from './components/list-series-by-genre-selector/list-series-by-genre-selector.component';
+import { SeriesService } from './services/series.service';
 
 
 
@@ -30,6 +31,9 @@ import { ListSeriesByGenreSelectorComponent } from './components/list-series-by-
     CommonModule,
     SeriesRoutingModule,
     MaterialModule
+  ],
+  providers: [
+    SeriesService
   ],
   exports: [
     ListPopularSeriesComponent

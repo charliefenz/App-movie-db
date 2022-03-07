@@ -9,9 +9,7 @@ import { ArraySeriesResponse } from '../models/array-series-response';
 import { SeasonDetail } from '../models/season-detail';
 import { SerieDetail } from '../models/serie-detail';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SeriesService {
 
   constructor(private httpClient: HttpClient) { }
