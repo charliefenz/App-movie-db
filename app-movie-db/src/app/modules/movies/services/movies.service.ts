@@ -8,9 +8,7 @@ import { GlobalConstants } from 'src/app/common/classes/global-constants';
 import { ArrayMovieCreditsResponse } from '../models/array-movie-credits-response';
 import { ArrayGenresResponse } from '../../../common/models/array-genres-response';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MoviesService {
 
   constructor(private httpClient: HttpClient) { }

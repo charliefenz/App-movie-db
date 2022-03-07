@@ -4,6 +4,7 @@ import { SearchRoutingModule } from './search-routing.module';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SearchItemComponent } from './components/search-item/search-item.component';
 import { MaterialModule } from '../material/material.module';
+import { SearchService } from './services/search.service';
 
 @NgModule({
   declarations: [SearchResultComponent, SearchItemComponent],
@@ -11,6 +12,7 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     SearchRoutingModule,
     MaterialModule
-  ]
+  ],
+  providers: [SearchService]
 })
 export class SearchModule { }

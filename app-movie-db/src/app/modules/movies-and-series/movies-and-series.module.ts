@@ -4,6 +4,8 @@ import { MoviesAndSeriesRoutingModule } from './movies-and-series-routing.module
 import { MainComponent } from './components/main/main.component';
 import { MainItemComponent } from './components/main-item/main-item.component';
 import { MaterialModule } from '../material/material.module';
+import { SeriesService } from '../series/services/series.service';
+import { MoviesService } from '../movies/services/movies.service';
 
 
 
@@ -16,6 +18,7 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     MoviesAndSeriesRoutingModule,
     MaterialModule
-  ]
+  ],
+  providers: [SeriesService, MoviesService]
 })
 export class MoviesAndSeriesModule { }
