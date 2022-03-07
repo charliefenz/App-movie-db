@@ -5,6 +5,7 @@ import { MainComponent } from './components/main/main.component';
 import { MainItemComponent } from './components/main-item/main-item.component';
 import { MaterialModule } from '../material/material.module';
 import { SeriesService } from '../series/services/series.service';
+import { MoviesService } from '../movies/services/movies.service';
 
 
 
@@ -18,6 +19,6 @@ import { SeriesService } from '../series/services/series.service';
     MoviesAndSeriesRoutingModule,
     MaterialModule
   ],
-  providers: [SeriesService]
+  providers: [SeriesService, MoviesService]
 })
 export class MoviesAndSeriesModule { }
