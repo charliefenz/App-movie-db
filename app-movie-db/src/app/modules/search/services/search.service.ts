@@ -4,9 +4,7 @@ import { BehaviorSubject, Observable} from 'rxjs';
 import { EndPoints } from 'src/app/common/classes/endpoints';
 import { SearchResponseObject } from '../models/search-response-object';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SearchService {
   
   private _detector = 0;
