@@ -17,7 +17,13 @@ export class SearchService {
   constructor(private httpClient: HttpClient) { }
 
   getSearchResults(query: string, pageNumber: string): Observable<SearchResponse> {
-    return this.httpClient.get<SearchResponse>(`${EndPoints.multiSearch}&query=${query}&page=${pageNumber}`);
+    try {
+      return this.httpClient.get<SearchResponse>(`${EndPoints.multiSearch}&query=${query}&page=${pageNumber}`);
+    } catch (error) {
+      console.log(`Request error`);
+    }
+
+    
   }
 
   informCompleteReception(): void {
@@ -29,5 +35,6 @@ export class SearchService {
   }
 
   //TODO: Create error handling mechanism for http
+  // Check for this resource https://www.tektutorialshub.com/angular/angular-http-error-handling/#:~:text=Whenever%20the%20error%20occurs%20in,using%20the%20Angular%20HTTP%20Interceptor.
   //TODO: Handle to request no-cache on headers
 }
