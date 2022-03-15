@@ -1,11 +1,16 @@
 <!-- TODO: Add a search menu that filters the results -->
-<div class="episode-list container-fluid" *ngIf="existingReturn">
-    <div class="row gx-0">
-        <div class="col-12 col-sm-4 col-md-3 col-xl-2 grid" *ngFor="let searchItem of searchResponseCleaned">
-            <app-search-item [searchItem]="searchItem"></app-search-item>
+<div *ngIf="!resultsLoaded">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="resultsLoaded" class="search-result-container">
+    <div class="container-fluid" *ngIf="existingReturn">
+        <div class="row gx-0">
+            <div class="col-12 col-sm-4 col-md-3 col-xl-2 grid" *ngFor="let searchItem of cleanSearchResults">
+                <app-search-item [searchItem]="searchItem"></app-search-item>
+            </div>
         </div>
     </div>
-</div>
-<div *ngIf="!existingReturn" class="no-return">
-    <p>No se han encontrado resultados, por favor inténtalo de nuevo...</p>
+    <div *ngIf="!existingReturn" class="no-return">
+        <p>No se han encontrado resultados, por favor inténtalo de nuevo...</p>
+    </div>
 </div>
