@@ -21,9 +21,13 @@ export class SearchService {
   }
 
   informCompleteReception(): void {
-    console.log('service informed of completed petition');
     this._changeDetection.next(++this._detector);
   }
 
+  resetReceptionCounter(): void {
+    this._changeDetection.next(this._detector = 0);
+  }
+
   //TODO: Create error handling mechanism for http
+  //TODO: Handle to request no-cache on headers
 }
