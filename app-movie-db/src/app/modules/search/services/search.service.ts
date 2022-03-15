@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable} from 'rxjs';
 import { EndPoints } from 'src/app/common/classes/endpoints';
-import { SearchResponseObject } from '../models/search-response-object';
+import { SearchResponse } from '../models/search-response';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +16,18 @@ export class SearchService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getSearchResults(query: string, pageNumber: string): Observable<SearchResponseObject> {
-    return this.httpClient.get<SearchResponseObject>(`${EndPoints.multiSearch}&query=${query}&page=${pageNumber}`);
+  getSearchResults(query: string, pageNumber: string): Observable<SearchResponse> {
+    return this.httpClient.get<SearchResponse>(`${EndPoints.multiSearch}&query=${query}&page=${pageNumber}`);
   }
 
   informCompleteReception(): void {
-    console.log('service informed of completed petition');
     this._changeDetection.next(++this._detector);
   }
 
+  resetReceptionCounter(): void {
+    this._changeDetection.next(this._detector = 0);
+  }
+
   //TODO: Create error handling mechanism for http
+  //TODO: Handle to request no-cache on headers
 }

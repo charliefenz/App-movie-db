@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { mergeMap } from 'rxjs/operators';
 import { SearchService } from '../../services/search.service';
 import { SearchResponse } from '../../models/search-response';
-import { SearchResponseObject } from '../../models/search-response-object';
+import { SearchResults } from '../../models/search-results';
 
 @Component({
   selector: 'app-search-result',
@@ -14,67 +13,94 @@ import { SearchResponseObject } from '../../models/search-response-object';
 export class SearchResultComponent implements OnInit {
 
   valueToSearch: string;
-  searchPage = 1;
-  searchResponse: SearchResponse[];
-  searchResponseIdealLength = 10;
+  searchPage: number;
   existingReturn = true;
+  resultsLoaded = false;
   mediaTypePerson = 'person';
-  rawSearchResponseLength: number;
-  searchResponseCleaned: SearchResponse[];
-  searchResponseCleanedLength: number;
-  searchResponseObjectTotalItems: number;
+  searchResultsIdealLength = 10;
+
+  searchResults: SearchResults[]; // Array with movies, series and/or persons in it
+  searchResultsLength: number;
+  cleanSearchResults: SearchResults[]; // Array with only movies and/or series in it
+  cleanSearchResultsLength: number;
+  totalSearchableItems: number;
   
   constructor(private searchService: SearchService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.searchService.changeDetection.subscribe((change) => {
-      if (change > 0 && this.searchResponseObjectTotalItems > 0) {
-        if (this.searchResponseCleanedLength < this.searchResponseIdealLength && this.rawSearchResponseLength < this.searchResponseObjectTotalItems) {
-          this.searchPage++;
-          this.getExtraSearchResults(this.searchPage);
-        }
-      }
+    this.route.queryParams
+    .subscribe((queryParams) => {
+      this.resetResults();
+      this.searchService.resetReceptionCounter();
+      this.valueToSearch = queryParams.query;
+      this.searchPage = 1;
+      this.getSearchResults(this.searchPage);
     });
-    this.getSearchResults(this.searchPage);
+  
+    this.searchService.changeDetection
+    .subscribe((changesSoFar) => {
+      this.executeSearchIfNeeded(changesSoFar);
+      this.controlLoaderIcon();
+    });
   }
 
   getSearchResults(searchPage: number): void {
-    const routeQuery$ = this.route.queryParams;
-    routeQuery$
-    .pipe(
-      mergeMap((queryObject) => {
-        this.valueToSearch = queryObject.query;
-        return this.searchService.getSearchResults(this.valueToSearch, searchPage.toString());
-      })
-    )
-    .subscribe((searchResponseObject) => {
-      if (searchResponseObject.total_pages === 0) {
+    this.searchService.getSearchResults(this.valueToSearch, searchPage.toString())
+    .subscribe((initialSearchResponse) => {
+      if (initialSearchResponse.total_pages === 0) {
         this.existingReturn = false;
       } else {
-        this.fillProperties(searchResponseObject);
+        this.existingReturn = true;
+        this.fillProperties(initialSearchResponse);
       }
-      this.searchResponseObjectTotalItems = searchResponseObject.total_results;
+      this.totalSearchableItems = initialSearchResponse.total_results;
       this.searchService.informCompleteReception();
     });
   }
 
-  fillProperties(searchResponseObject: SearchResponseObject): void {
-    this.rawSearchResponseLength = searchResponseObject.results.length;
-    this.searchResponseCleaned = this.removePersonsFromSearchResult(searchResponseObject.results);
-    this.searchResponseCleanedLength = this.searchResponseCleaned.length;
-  }
-
-  removePersonsFromSearchResult(rawSearchResponse: SearchResponse[]): SearchResponse[] {
-    return rawSearchResponse.filter(searchItem => searchItem.media_type !== this.mediaTypePerson);
+  executeSearchIfNeeded(changesSoFar: number) : void {
+    if (changesSoFar > 0 && this.totalSearchableItems > 0) {
+      if (this.cleanSearchResultsLength < this.searchResultsIdealLength && this.searchResultsLength < this.totalSearchableItems) {
+        this.searchPage++;
+        this.getExtraSearchResults(this.searchPage);
+        this.resultsLoaded = false;
+      }
+    } 
   }
 
   getExtraSearchResults(searchPage: number): void {
     this.searchService.getSearchResults(this.valueToSearch, searchPage.toString())
-    .subscribe((subsequentSearchResponseObject) => {
-      this.rawSearchResponseLength += subsequentSearchResponseObject.results.length;
-      this.searchResponseCleaned.push(...this.removePersonsFromSearchResult(subsequentSearchResponseObject.results));
-      this.searchResponseCleanedLength = this.searchResponseCleaned.length;
+    .subscribe((searchResponse) => {
+      this.searchResultsLength += searchResponse.results.length;
+      this.cleanSearchResults.push(...this.removePersonsFromSearchResults(searchResponse.results));
+      this.cleanSearchResultsLength = this.cleanSearchResults.length;
       this.searchService.informCompleteReception();
     });
   }
+
+  controlLoaderIcon(): void {
+    if (this.cleanSearchResultsLength >= this.searchResultsIdealLength || this.searchResultsLength == this.totalSearchableItems) {
+      this.resultsLoaded = true;
+    }
+  }
+
+  fillProperties(searchResponse: SearchResponse): void {
+    this.searchResultsLength = searchResponse.results.length;
+    this.cleanSearchResults = this.removePersonsFromSearchResults(searchResponse.results);
+    this.cleanSearchResultsLength = this.cleanSearchResults.length;
+  }
+
+  removePersonsFromSearchResults(searchResults: SearchResults[]): SearchResults[] {
+    return searchResults.filter(searchItem => searchItem.media_type !== this.mediaTypePerson);
+  }
+
+  resetResults(): void {
+    this.valueToSearch = '';
+    this.searchPage = 1;
+    this.searchResults = [];
+    this.searchResultsLength = this.searchResults.length;
+    this.cleanSearchResults = [];
+    this.cleanSearchResultsLength = this.cleanSearchResults.length;
+  }
+
 }
