@@ -1,6 +1,8 @@
 <!-- TODO: Add a search menu that filters the results -->
-<div *ngIf="!resultsLoaded">
-    <mat-spinner></mat-spinner>
+<div class="spinner-wrapper" *ngIf="!resultsLoaded">
+    <div class="spinner">
+        <mat-spinner></mat-spinner>
+    </div>
 </div>
 <div *ngIf="resultsLoaded" class="search-result-container">
     <div class="container-fluid" *ngIf="existingReturn">

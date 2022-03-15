@@ -1,9 +1,20 @@
 @import 'src/app/common/variables.scss';
 
-.search-result-container {
+:host {
+    height: 100%;
+}
+
+.search-result-container, .spinner, .spinner-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.spinner-wrapper {
+    height: 100%;
+}
+
+.search-result-container {
     width: 100%;
 
     .no-return {
