@@ -1,0 +1,10 @@
+{
+    "users": [
+        {
+            "email": "fentecarlos@gmail.com",
+            "name": "Carlos Fente",
+            "password": "123456",
+            "birthdate": "06/01/1987"
+        }
+    ]
+}
