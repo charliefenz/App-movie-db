@@ -1,3 +1,5 @@
+@import 'src/app/common/variables.scss';
+
 :host {
     height: 100%;
     display: flex;
@@ -15,4 +17,16 @@ form {
 
 .form-group, .example-full-width {
     width: 100%;
+}
+
+@media screen and (max-width: $xs) {
+    form {
+        width: 80%;
+    }   
+}
+
+@media screen and (max-width: $sm) {
+    form {
+        width: 60%;
+    }   
 }
