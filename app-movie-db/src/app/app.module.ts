@@ -8,9 +8,7 @@ import { MaterialModule } from 'src/app/modules/material/material.module';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarComponent } from './components/layout/search-bar/search-bar.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FocusDirective } from './directives/focus.directive';
-import { LoginFormComponent } from './components/login-form/login-form.component';
+import { FocusDirective } from './directives/focus.directive';;
 
 @NgModule({
   declarations: [
@@ -18,17 +16,14 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     HeaderComponent,
     FooterComponent,
     SearchBarComponent,
-    FocusDirective,
-    LoginFormComponent
+    FocusDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
