@@ -20,6 +20,10 @@
         font-weight: 500;
     }
 
+    .search-bar {
+        margin: 0 1rem;
+    }
+
     .menu-button {
         display: inline-flex;
         align-items: center;
@@ -30,6 +34,15 @@
             height: $header-height;
             border-radius: 5px;
         }  
+    }
+
+    .login-logo {
+        color: white;
+        cursor: pointer;
+
+        &:hover, &.active {
+            color: $color-2nd;
+        }
     }
 
     @media screen and (max-width: 632px){
