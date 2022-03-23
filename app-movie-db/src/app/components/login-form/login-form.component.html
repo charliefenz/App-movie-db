@@ -1,19 +1,23 @@
 <form [formGroup]="loginForm" (submit)="onSubmit()">
-    <div class="form-group">
-        <label for="loginEmail">Email:</label>
-        <input type="email" name="loginEmail" id="loginEmail" class="formControl" formControlName="email" (click)="showValidationErrors = false">
-        <div class="errors" *ngIf="showValidationErrors">
-            <div *ngIf="emailControl.errors?.required">Tienes que introducir tu correo electrónico</div>
-            <div *ngIf="emailControl.errors?.email">Formato de correo electrónico no válido</div>
-        </div>        
-    </div>
-    <div class="form-group">
-        <label for="loginPassword">Contraseña:</label>
-        <input type="password" name="loginPassword" id="loginPassword" class="formControl" formControlName="password" (click)="showValidationErrors = false">
-        <div class="errors" *ngIf="showValidationErrors">
-            <div *ngIf="passwordControl.errors?.required">Tienes que introducir tu contraseña</div>
-            <div *ngIf="passwordControl.errors?.minlength">Contraseña incompleta</div>
-        </div>    
-    </div>
-    <button type="submit">Entrar</button>
+<div class="form-group">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email:</mat-label>
+        <input type="email" matInput name="loginEmail" id="loginEmail" class="formControl" formControlName="email" (click)="showValidationErrors = false" autocomplete="off">
+        <mat-error *ngIf="emailControl.errors?.required">
+            Tienes que introducir tu correo electrónico
+        </mat-error>
+        <mat-error *ngIf="emailControl.errors?.email">
+            Formato de correo electrónico no válido
+        </mat-error>
+    </mat-form-field>
+</div>
+<div class="form-group">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Contraseña:</mat-label>
+        <input type="password" matInput name="loginPassword" id="loginPassword" class="formControl" formControlName="password" (click)="showValidationErrors = false" autocomplete="off">
+        <mat-error *ngIf="passwordControl.errors?.required">Tienes que introducir tu contraseña</mat-error>
+        <mat-error *ngIf="passwordControl.errors?.minlength">Contraseña incompleta</mat-error>
+    </mat-form-field>
+</div>
+<button mat-raised-button color="primary" type="submit">Entrar</button>
 </form>
