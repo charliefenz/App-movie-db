@@ -5,6 +5,7 @@ import { MaterialModule } from '../material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormRoutingModule } from './login-form-routing.module';
+import { LoginFormService } from './services/login-form.service';
 
 
 
@@ -18,6 +19,6 @@ import { LoginFormRoutingModule } from './login-form-routing.module';
     ReactiveFormsModule,
     LoginFormRoutingModule
   ],
-  providers: []
+  providers: [LoginFormService]
 })
 export class LoginFormModule { }
